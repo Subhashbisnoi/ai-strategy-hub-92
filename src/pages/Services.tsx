@@ -1,211 +1,226 @@
-import { Check, Target, Bot, Zap, Shield, BarChart, Users, GraduationCap, Award, RefreshCw } from "lucide-react";
+import { Check, Brain, Bot, Server, Workflow, Cable, GraduationCap, ArrowRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const whyUs = [
-  { icon: GraduationCap, title: "IIITian Founders", desc: "Elite technical education from IIIT Chennai, India's AI powerhouse" },
-  { icon: Award, title: "Proven Track Record", desc: "Award-winning team with real enterprise and startup experience" },
-  { icon: BarChart, title: "ROI-Focused", desc: "We prioritize business outcomes, not just cool technology" },
-  { icon: RefreshCw, title: "Full-Stack Service", desc: "From strategy to deployment to optimization—we handle it all" },
-  { icon: Users, title: "Cross-Industry", desc: "Proven success across fintech, e-commerce, enterprise SaaS" },
-  { icon: Zap, title: "Fast Results", desc: "See measurable results in weeks, not months" },
-];
-
-const consulting = [
-  { phase: "Week 1", title: "Discovery & Assessment", items: ["Current state analysis", "Technology audit", "Team capability assessment", "Opportunity identification"] },
-  { phase: "Week 2-3", title: "Strategy Development", items: ["Custom AI roadmap", "Technology stack recommendations", "ROI projections", "Implementation timeline"] },
-  { phase: "Week 3-4", title: "Execution Planning", items: ["Detailed project plans", "Resource allocation", "Risk mitigation", "Success metrics definition"] },
-];
-
-const agentDev = [
-  { phase: "Week 1", title: "Opportunity Analysis", items: ["Process mapping", "Automation assessment", "Use case prioritization", "ROI estimation"] },
-  { phase: "Week 2", title: "Design & Architecture", items: ["Technical specification", "System architecture", "Integration planning", "UX design"] },
-  { phase: "Week 3-6", title: "Development & Testing", items: ["Custom AI agent development", "System integration", "Rigorous testing", "Performance optimization"] },
-  { phase: "Week 7-8", title: "Deployment & Training", items: ["Production deployment", "Team training", "Documentation", "Knowledge transfer"] },
+const serviceDetails = [
+  {
+    id: "strategy",
+    icon: Brain, color: "bg-blue-500", lightColor: "bg-blue-50 text-blue-600", title: "AI Strategy & Consulting",
+    oneLiner: "Know exactly where AI will save you time and money — before writing a single line of code.",
+    desc: "We audit your workflows, identify the highest-ROI opportunities for AI agents, and deliver a prioritized roadmap with cost projections. No fluff, no buzzwords — just a clear plan your team can execute.",
+    deliverables: ["AI readiness report", "Prioritized use-case matrix", "ROI & cost model", "Phased implementation plan", "Tech stack recommendations"],
+    timeline: "2–4 weeks",
+  },
+  {
+    id: "agents",
+    icon: Bot, color: "bg-purple-500", lightColor: "bg-purple-50 text-purple-600", title: "Custom AI Agent Development",
+    oneLiner: "Production-grade AI agents that actually handle work — not just answer questions.",
+    desc: "We build autonomous agents that handle customer support, process documents, qualify leads, manage internal knowledge, and orchestrate multi-step workflows. Powered by LLMs with RAG, tool-calling, memory, and guardrails.",
+    deliverables: ["Custom-trained AI agents", "RAG knowledge pipeline", "Multi-agent orchestration", "Tool-calling integration", "Guardrails & safety layers", "Monitoring dashboard"],
+    timeline: "4–8 weeks",
+  },
+  {
+    id: "infra",
+    icon: Server, color: "bg-slate-600", lightColor: "bg-slate-100 text-slate-700", title: "AI Infrastructure & MLOps",
+    oneLiner: "The infra your AI agents need to run fast, reliably, and affordably at scale.",
+    desc: "Vector databases, LLM gateways with smart routing, model serving, observability pipelines, CI/CD for AI, and cost-optimized cloud architecture. Everything your agents need to run in production without breaking.",
+    deliverables: ["Vector DB setup (Pinecone / Weaviate / Qdrant)", "LLM gateway with routing & fallbacks", "Cost monitoring & rate limiting", "CI/CD pipeline for models", "Auto-scaling & disaster recovery"],
+    timeline: "3–5 weeks",
+  },
+  {
+    id: "automation",
+    icon: Workflow, color: "bg-orange-500", lightColor: "bg-orange-50 text-orange-600", title: "AI-Powered Workflow Automation",
+    oneLiner: "Connect AI agents to your CRM, ERP, email, Slack — automate entire processes end-to-end.",
+    desc: "We build multi-step automated workflows using n8n, LangChain, and CrewAI that connect your AI agents to your existing tools. Including human-in-the-loop checkpoints for decisions that need a person.",
+    deliverables: ["End-to-end workflow design", "n8n / Make integration", "Multi-step agent chains", "Human-in-the-loop gates", "Error handling & retries", "Real-time monitoring"],
+    timeline: "4–6 weeks",
+  },
+  {
+    id: "integration",
+    icon: Cable, color: "bg-emerald-500", lightColor: "bg-emerald-50 text-emerald-600", title: "AI Integration & API Development",
+    oneLiner: "Plug AI capabilities into your existing software with custom APIs and middleware.",
+    desc: "Custom REST/GraphQL endpoints, LLM middleware for your SaaS, streaming response support, legacy system connectors, and secure data pipelines between your systems and AI models.",
+    deliverables: ["Custom AI API endpoints", "LLM integration middleware", "Streaming & webhook support", "Legacy system connectors", "Security audit & hardening"],
+    timeline: "4–6 weeks",
+  },
+  {
+    id: "training",
+    icon: GraduationCap, color: "bg-pink-500", lightColor: "bg-pink-50 text-pink-600", title: "AI Training & Ongoing Support",
+    oneLiner: "Your team learns to own, extend, and optimize the AI agents we build.",
+    desc: "Hands-on workshops for prompt engineering, agent management, and debugging. Plus ongoing monitoring, quarterly strategy reviews, and continuous optimization so your AI keeps getting smarter.",
+    deliverables: ["Prompt engineering workshops", "Agent management training", "Performance monitoring setup", "Quarterly optimization reviews", "Priority support channel"],
+    timeline: "Ongoing",
+  },
 ];
 
 const packages = [
-  { name: "Starter", price: "From $5K", features: ["Initial strategy consultation", "1 AI agent development", "3 months support"], highlight: false },
-  { name: "Growth", price: "From $25K", features: ["Full strategy development", "3 AI agents", "6 months support", "Priority access"], highlight: true },
-  { name: "Enterprise", price: "Custom", features: ["Comprehensive transformation", "Unlimited agents (first year)", "12 months premium support", "Dedicated account manager"], highlight: false },
+  { name: "Strategy", price: "$5K", desc: "For teams exploring AI", features: ["AI readiness assessment", "Custom roadmap & ROI models", "Use-case prioritization", "3 months advisory"], highlight: false },
+  { name: "Growth", price: "From $25K", desc: "Strategy + development", features: ["Everything in Strategy", "Up to 3 AI agents", "Infrastructure setup", "Workflow automation", "6 months support"], highlight: true },
+  { name: "Enterprise", price: "Custom", desc: "Full AI transformation", features: ["Everything in Growth", "Unlimited agents & workflows", "Dedicated engineering team", "MLOps & infra management", "12 months premium support"], highlight: false },
+];
+
+const techStack = [
+  { category: "LLM & Agents", desc: "We pick the right model and framework for each use case — balancing cost, latency, and accuracy.", tools: ["OpenAI GPT-4o", "Claude 3.5 Sonnet", "Gemini Pro", "LangChain", "LangGraph", "CrewAI", "AutoGen", "LlamaIndex", "Hugging Face"] },
+  { category: "Vector & Data", desc: "Your AI agents are only as good as their data. We set up retrieval pipelines that return the right context, fast.", tools: ["Pinecone", "Weaviate", "Qdrant", "ChromaDB", "PostgreSQL + pgvector", "Redis", "MongoDB", "Supabase"] },
+  { category: "Automation & APIs", desc: "We connect AI agents to your existing tools and build custom endpoints for any integration.", tools: ["n8n", "Make (Integromat)", "FastAPI", "Express.js", "Python", "Node.js", "GraphQL", "Webhook listeners"] },
+  { category: "Infrastructure & DevOps", desc: "Production infrastructure that scales with your usage and keeps costs predictable.", tools: ["AWS (Lambda, ECS, S3)", "GCP (Cloud Run, Vertex AI)", "Docker", "Kubernetes", "Vercel", "Terraform", "GitHub Actions CI/CD"] },
 ];
 
 const Services = () => (
-  <main className="pt-24">
-    {/* Hero */}
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-15" />
-      <div className="container mx-auto px-6 relative z-10 text-center">
+  <main className="pt-16">
+    {/* Hero — compact with service quick links */}
+    <section className="py-12 md:py-16 bg-stripe-gradient border-b border-border/40">
+      <div className="container mx-auto px-6">
         <AnimatedSection>
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            AI Services That Drive{" "}
-            <span className="text-gradient">Real Transformation</span>
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-2">Services</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.08] mb-5 max-w-2xl">
+            AI agents, infra &amp; consulting —{" "}
+            <span className="text-gradient">end to end.</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Strategic consulting and custom automation solutions designed for your unique business needs.
+          <p className="text-lg text-muted-foreground max-w-lg mb-6">
+            From strategy to production-grade AI agents running your workflows.
           </p>
-        </AnimatedSection>
-      </div>
-    </section>
 
-    {/* Why Choose Us */}
-    <section className="py-20 bg-card/50">
-      <div className="container mx-auto px-6">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-bold mb-4">
-            Why Leading Companies <span className="text-gradient">Choose Us</span>
-          </h2>
-        </AnimatedSection>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {whyUs.map((w, i) => (
-            <AnimatedSection key={w.title} delay={i * 0.05}>
-              <div className="p-6 rounded-xl bg-background border border-border card-hover h-full text-center">
-                <w.icon className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold mb-2">{w.title}</h3>
-                <p className="text-sm text-muted-foreground">{w.desc}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* AI Strategy Consulting */}
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <AnimatedSection>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Target className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-heading font-bold">AI Strategy Consulting</h2>
-              <p className="text-primary text-sm font-medium">From Assessment to Implementation Roadmap</p>
-            </div>
-          </div>
-        </AnimatedSection>
-        <AnimatedSection>
-          <p className="text-muted-foreground mb-10 max-w-3xl leading-relaxed">
-            Our strategic consulting service helps organizations navigate the complex AI landscape.
-            We assess your readiness, identify highest-impact opportunities, and create a clear roadmap
-            for implementation that aligns with your business goals and delivers measurable ROI.
-          </p>
-        </AnimatedSection>
-        <div className="grid md:grid-cols-3 gap-6">
-          {consulting.map((c, i) => (
-            <AnimatedSection key={c.title} delay={i * 0.1}>
-              <div className="p-6 rounded-xl bg-card border border-border h-full">
-                <span className="text-xs font-medium text-primary">{c.phase}</span>
-                <h3 className="font-heading font-semibold mt-1 mb-4">{c.title}</h3>
-                <ul className="space-y-2">
-                  {c.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* AI Agent Development */}
-    <section className="py-20 bg-card/50">
-      <div className="container mx-auto px-6">
-        <AnimatedSection>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Bot className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-heading font-bold">AI Agent Development</h2>
-              <p className="text-primary text-sm font-medium">Custom AI Agents That Work 24/7</p>
-            </div>
-          </div>
-        </AnimatedSection>
-        <AnimatedSection>
-          <p className="text-muted-foreground mb-10 max-w-3xl leading-relaxed">
-            We build custom AI agents tailored to your specific workflows. From conversational
-            customer support bots to intelligent document processors, our agents handle repetitive
-            tasks so your team can focus on high-value work.
-          </p>
-        </AnimatedSection>
-        <div className="grid md:grid-cols-4 gap-6">
-          {agentDev.map((a, i) => (
-            <AnimatedSection key={a.title} delay={i * 0.1}>
-              <div className="p-6 rounded-xl bg-background border border-border h-full">
-                <span className="text-xs font-medium text-primary">{a.phase}</span>
-                <h3 className="font-heading font-semibold mt-1 mb-4">{a.title}</h3>
-                <ul className="space-y-2">
-                  {a.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Use Cases */}
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-bold mb-4">Example <span className="text-gradient">Use Cases</span></h2>
-        </AnimatedSection>
-        <AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Customer Support Automation", "Lead Qualification", "Document Processing", "Data Entry & Extraction", "IT Support Bots", "Sales Automation", "Financial Reporting", "Compliance Monitoring"].map((uc) => (
-              <div key={uc} className="p-4 rounded-lg bg-card border border-border text-center text-sm text-muted-foreground">
-                {uc}
-              </div>
+          {/* Quick jump links */}
+          <div className="flex flex-wrap gap-2">
+            {serviceDetails.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-white text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 hover:shadow-sm transition-all"
+              >
+                <s.icon className="h-3.5 w-3.5" />
+                {s.title.split(" & ")[0].replace("AI-Powered ", "").replace("Custom ", "")}
+              </a>
             ))}
           </div>
         </AnimatedSection>
       </div>
     </section>
 
-    {/* Packages */}
-    <section className="py-20 bg-card/50">
-      <div className="container mx-auto px-6">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-bold mb-4">
-            Complete AI <span className="text-gradient">Transformation Packages</span>
-          </h2>
-        </AnimatedSection>
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {packages.map((pkg, i) => (
-            <AnimatedSection key={pkg.name} delay={i * 0.1}>
-              <div className={`p-8 rounded-xl border h-full flex flex-col ${
-                pkg.highlight
-                  ? "bg-primary/5 border-primary/30 glow-sm"
-                  : "bg-background border-border"
-              }`}>
-                {pkg.highlight && (
-                  <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mb-4">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="font-heading text-xl font-bold mb-1">{pkg.name}</h3>
-                <p className="text-2xl font-heading font-bold text-gradient mb-6">{pkg.price}</p>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {pkg.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                      {f}
+    {/* Service Detail Sections */}
+    {serviceDetails.map((service, idx) => (
+      <section
+        key={service.id}
+        id={service.id}
+        className={`py-10 md:py-14 ${idx % 2 === 1 ? 'bg-stripe-gradient' : 'bg-white'} scroll-mt-20`}
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            {/* Left: Info (3 cols) */}
+            <AnimatedSection className="lg:col-span-3">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-9 h-9 rounded-lg ${service.lightColor} flex items-center justify-center`}>
+                  <service.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2 className="text-xl md:text-2xl font-extrabold tracking-tight">{service.title}</h2>
+                </div>
+              </div>
+
+              <p className="text-[17px] font-medium text-foreground/80 mb-3 leading-snug">
+                {service.oneLiner}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-xl">
+                {service.desc}
+              </p>
+
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Timeline</span>
+                <span className="text-xs font-bold text-primary bg-primary/5 px-2.5 py-0.5 rounded-full">{service.timeline}</span>
+              </div>
+            </AnimatedSection>
+
+            {/* Right: Deliverables card (2 cols) */}
+            <AnimatedSection className="lg:col-span-2" delay={0.15}>
+              <div className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground mb-4">What you get</h3>
+                <ul className="space-y-3">
+                  {service.deliverables.map((d) => (
+                    <li key={d} className="flex items-start gap-2.5 text-[13px] text-muted-foreground">
+                      <div className={`w-5 h-5 rounded-md ${service.lightColor} flex items-center justify-center shrink-0 mt-0.5`}>
+                        <Check className="h-3 w-3" />
+                      </div>
+                      {d}
                     </li>
                   ))}
                 </ul>
-                <Button className={pkg.highlight ? "glow-sm w-full" : "w-full"} variant={pkg.highlight ? "default" : "outline"} asChild>
-                  <Link to="/contact">Get Started</Link>
+                <div className="mt-5 pt-4 border-t border-border/40">
+                  <Button size="sm" variant="outline" className="rounded-lg text-xs w-full" asChild>
+                    <Link to="/contact">
+                      Discuss this service <ArrowRight className="ml-1.5 h-3 w-3" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    {/* Tech Stack — rich cards */}
+    <section className="py-10 md:py-14 bg-white border-t border-border/40">
+      <div className="container mx-auto px-6">
+        <AnimatedSection>
+          <div className="max-w-2xl mb-10">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-2">Our tech stack</h2>
+            <p className="text-sm text-muted-foreground">Battle-tested tools we use to build, deploy, and scale your AI systems. We're vendor-agnostic — we pick the best tool for each job.</p>
+          </div>
+        </AnimatedSection>
+
+        <div className="grid sm:grid-cols-2 gap-5">
+          {techStack.map((cat, i) => (
+            <AnimatedSection key={cat.category} delay={i * 0.08}>
+              <div className="rounded-2xl border border-border/60 p-6 bg-white h-full">
+                <h3 className="text-sm font-bold tracking-tight text-foreground mb-1.5">{cat.category}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">{cat.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.tools.map((t) => (
+                    <span key={t} className="px-2.5 py-1 text-[11px] font-medium rounded-md bg-secondary/80 text-muted-foreground">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Pricing */}
+    <section className="py-12 md:py-16 bg-stripe-gradient">
+      <div className="container mx-auto px-6">
+        <AnimatedSection>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Simple, transparent pricing</h2>
+            <p className="text-muted-foreground">No hidden fees. Start small, scale when ready.</p>
+          </div>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          {packages.map((pkg, i) => (
+            <AnimatedSection key={pkg.name} delay={i * 0.1}>
+              <div className={`rounded-2xl border p-7 h-full flex flex-col bg-white ${
+                pkg.highlight
+                  ? 'border-primary/30 shadow-lg shadow-primary/5 ring-1 ring-primary/10'
+                  : 'border-border/60'
+              }`}>
+                {pkg.highlight && (
+                  <span className="text-[10px] font-bold text-white bg-primary px-2.5 py-1 rounded-full self-start mb-3">Most popular</span>
+                )}
+                <h3 className="font-bold text-lg tracking-tight">{pkg.name}</h3>
+                <p className="text-xs text-muted-foreground mb-1">{pkg.desc}</p>
+                <p className="text-3xl font-extrabold text-gradient mt-2 mb-6">{pkg.price}</p>
+                <ul className="space-y-2.5 mb-7 flex-1">
+                  {pkg.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />{f}
+                    </li>
+                  ))}
+                </ul>
+                <Button className={`rounded-lg w-full ${pkg.highlight ? '' : 'bg-secondary text-foreground hover:bg-secondary/80'}`} asChild>
+                  <Link to="/contact">Get started</Link>
                 </Button>
               </div>
             </AnimatedSection>
@@ -214,35 +229,21 @@ const Services = () => (
       </div>
     </section>
 
-    {/* Tech */}
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-bold mb-4">
-            Built on <span className="text-gradient">Cutting-Edge Technology</span>
-          </h2>
-        </AnimatedSection>
-        <AnimatedSection>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["OpenAI GPT-4", "LangChain", "Python", "Node.js", "TensorFlow", "AWS", "Docker", "Pinecone", "React", "PostgreSQL"].map((tech) => (
-              <span key={tech} className="px-5 py-2.5 rounded-full bg-card border border-border text-sm text-muted-foreground">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </AnimatedSection>
-      </div>
-    </section>
-
     {/* CTA */}
-    <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-      <div className="container mx-auto px-6 text-center">
+    <section className="bg-stripe-blue py-12 md:py-16 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,91,255,0.15),transparent_60%)]" />
+      <div className="container mx-auto px-6 relative z-10 text-center">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-muted-foreground mb-8">Let's discuss how we can transform your business with AI.</p>
-          <Button size="lg" className="glow" asChild>
-            <Link to="/contact">Schedule Free Consultation</Link>
-          </Button>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-4">Ready to build your AI agents?</h2>
+          <p className="text-white/50 mb-7 max-w-lg mx-auto">30-minute strategy call. We'll assess your processes and tell you exactly where AI can help — no pitch, no pressure.</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button size="lg" className="rounded-lg px-8 bg-white text-slate-900 hover:bg-white/90" asChild>
+              <Link to="/contact">Book a free call <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-lg px-8 text-white/60 hover:text-white hover:bg-white/10" asChild>
+              <Link to="/about">Learn about us</Link>
+            </Button>
+          </div>
         </AnimatedSection>
       </div>
     </section>

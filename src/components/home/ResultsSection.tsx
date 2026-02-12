@@ -1,86 +1,74 @@
-import { Rocket, Clock, DollarSign, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Quote } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const stats = [
-  { icon: DollarSign, value: "$2M+", label: "Cost Savings Delivered" },
-  { icon: Rocket, value: "300%", label: "Average Client ROI" },
-  { icon: Clock, value: "6 wks", label: "Avg. Implementation" },
-  { icon: Users, value: "50+", label: "AI Agents Deployed" },
-];
-
-const cases = [
-  {
-    badge: "Startup",
-    company: "1buy.ai",
-    title: "Scaling AI for Hyper-Growth",
-    result: "Supported rapid month-over-month growth with scalable AI architecture",
-    metric: "10x Faster Processing",
-  },
-  {
-    badge: "Enterprise",
-    company: "TNQTech",
-    title: "Workflow Automation",
-    result: "Eliminated manual bottlenecks with automated workflow systems",
-    metric: "40% Cost Reduction",
-  },
-  {
-    badge: "Platform",
-    company: "CogniScale",
-    title: "Enterprise AI Platform",
-    result: "Built multi-tenant conversational AI serving multiple corporate clients",
-    metric: "24/7 AI Operations",
-  },
-];
-
 const ResultsSection = () => (
-  <section className="py-24 bg-card/50">
+  <section className="py-24 md:py-32 bg-white">
     <div className="container mx-auto px-6">
-      <AnimatedSection className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-          Real Companies. <span className="text-gradient">Real Results.</span>
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          See how we've transformed operations across industries.
-        </p>
+      {/* Stats bar — full width, big numbers */}
+      <AnimatedSection>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-20 pb-16 border-b border-border/50">
+          {[
+            { num: "$2M+", label: "Saved for clients" },
+            { num: "300%", label: "Average ROI" },
+            { num: "50+", label: "AI agents shipped" },
+            { num: "98.5%", label: "Client satisfaction" },
+          ].map((s) => (
+            <div key={s.label}>
+              <p className="text-3xl md:text-5xl font-extrabold tracking-tight text-gradient">{s.num}</p>
+              <p className="text-sm text-muted-foreground mt-1">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </AnimatedSection>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        {stats.map((s, i) => (
-          <AnimatedSection key={s.label} delay={i * 0.05}>
-            <div className="text-center p-6 rounded-xl bg-background border border-border">
-              <s.icon className="h-6 w-6 text-primary mx-auto mb-3" />
-              <p className="text-3xl font-heading font-bold text-gradient mb-1">{s.value}</p>
-              <p className="text-xs text-muted-foreground">{s.label}</p>
-            </div>
-          </AnimatedSection>
-        ))}
-      </div>
+      {/* Testimonial — editorial layout */}
+      <div className="grid lg:grid-cols-5 gap-12 items-start">
+        <AnimatedSection className="lg:col-span-2">
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">
+            Results
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] mb-4">
+            Real outcomes,{" "}
+            <span className="text-muted-foreground">not demos.</span>
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Every project starts with clear KPIs and ends with measurable business impact. Here's what our clients say.
+          </p>
+        </AnimatedSection>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-10">
-        {cases.map((c, i) => (
-          <AnimatedSection key={c.company} delay={i * 0.1}>
-            <div className="p-6 rounded-xl bg-background border border-border card-hover h-full flex flex-col">
-              <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mb-4">
-                {c.badge}
-              </span>
-              <h3 className="font-heading text-lg font-semibold mb-1">{c.company}</h3>
-              <p className="text-sm text-primary font-medium mb-3">{c.title}</p>
-              <p className="text-sm text-muted-foreground mb-4 flex-1">{c.result}</p>
-              <div className="pt-4 border-t border-border">
-                <p className="font-heading font-bold text-foreground">{c.metric}</p>
+        <div className="lg:col-span-3 space-y-6">
+          {[
+            {
+              quote: "NexusAI didn't just build us an AI system — they fundamentally changed how our operations run. We went from 3-day turnarounds to real-time processing.",
+              author: "Engineering Lead",
+              company: "1buy.ai",
+              result: "10x faster processing",
+            },
+            {
+              quote: "The team's enterprise experience shows. They understood our compliance requirements from day one and built accordingly. No hand-holding needed.",
+              author: "Head of Technology",
+              company: "TNQ Tech",
+              result: "40% cost reduction",
+            },
+          ].map((t, i) => (
+            <AnimatedSection key={i} delay={i * 0.15}>
+              <div className="rounded-2xl border border-border/60 p-7 hover:shadow-md transition-shadow duration-300">
+                <Quote className="h-5 w-5 text-primary/30 mb-4" />
+                <p className="text-[15px] leading-relaxed mb-5 text-foreground/80">{t.quote}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold">{t.author}</p>
+                    <p className="text-xs text-muted-foreground">{t.company}</p>
+                  </div>
+                  <span className="text-xs font-semibold text-primary bg-primary/5 px-3 py-1 rounded-full">
+                    {t.result}
+                  </span>
+                </div>
               </div>
-            </div>
-          </AnimatedSection>
-        ))}
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
-
-      <AnimatedSection className="text-center">
-        <Button variant="outline" asChild>
-          <Link to="/case-studies">View All Case Studies</Link>
-        </Button>
-      </AnimatedSection>
     </div>
   </section>
 );

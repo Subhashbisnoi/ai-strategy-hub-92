@@ -1,65 +1,72 @@
-import { Phone, FileText, Cog, TrendingUp } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const steps = [
   {
-    icon: Phone,
     num: "01",
-    title: "Discovery Call",
-    duration: "15-30 minutes",
-    description: "We analyze your current processes and identify AI opportunities with clear ROI potential.",
+    title: "Discovery call",
+    time: "30 min",
+    description: "We learn about your processes, pain points, and goals. We'll tell you honestly if AI is the right solution.",
   },
   {
-    icon: FileText,
     num: "02",
-    title: "Custom Proposal",
-    duration: "2-3 days",
-    description: "Receive a tailored strategy with specific recommendations, timelines, and ROI projections.",
+    title: "Custom proposal",
+    time: "3 days",
+    description: "You get a detailed roadmap with architecture, timeline, cost, and projected ROI — before any commitment.",
   },
   {
-    icon: Cog,
     num: "03",
-    title: "Implementation",
-    duration: "2-8 weeks",
-    description: "We build and deploy your AI solution with minimal disruption to operations.",
+    title: "Build & ship",
+    time: "4-8 weeks",
+    description: "Agile sprints with weekly demos. You see working software from week one, not slide decks.",
   },
   {
-    icon: TrendingUp,
     num: "04",
-    title: "Optimize & Scale",
-    duration: "Ongoing",
-    description: "Continuous monitoring, refinement, and expansion of AI capabilities for maximum impact.",
+    title: "Optimize & scale",
+    time: "Ongoing",
+    description: "We monitor performance, expand capabilities, and ensure your AI systems keep getting smarter.",
   },
 ];
 
 const ProcessSection = () => (
-  <section className="py-24">
+  <section className="py-24 md:py-32 bg-stripe-gradient">
     <div className="container mx-auto px-6">
-      <AnimatedSection className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-          Your Path to <span className="text-gradient">AI Transformation</span>
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          A proven 4-step process that delivers results in weeks, not months.
-        </p>
+      <AnimatedSection>
+        <div className="max-w-2xl mb-16">
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">
+            How it works
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1]">
+            Four steps from idea to{" "}
+            <span className="text-gradient">production.</span>
+          </h2>
+        </div>
       </AnimatedSection>
 
-      <div className="grid md:grid-cols-4 gap-6">
+      {/* Horizontal timeline on desktop, vertical on mobile */}
+      <div className="grid md:grid-cols-4 gap-0">
         {steps.map((step, i) => (
           <AnimatedSection key={step.num} delay={i * 0.1}>
-            <div className="relative p-6 rounded-xl bg-card border border-border card-hover h-full">
+            <div className="relative pl-8 md:pl-0 pb-10 md:pb-0 md:pr-8">
+              {/* Vertical line (mobile) / horizontal line (desktop) */}
               {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-border" />
+                <>
+                  <div className="absolute left-[11px] top-7 bottom-0 w-px bg-border md:hidden" />
+                  <div className="hidden md:block absolute top-3 left-[28px] right-0 h-px bg-border" />
+                </>
               )}
-              <span className="text-4xl font-heading font-bold text-primary/20 mb-4 block">
-                {step.num}
-              </span>
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <step.icon className="h-5 w-5 text-primary" />
+              
+              {/* Number dot */}
+              <div className="absolute left-0 md:relative md:left-auto w-6 h-6 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center mb-4">
+                {i + 1}
               </div>
-              <h3 className="font-heading text-lg font-semibold mb-1">{step.title}</h3>
-              <span className="text-xs text-primary font-medium block mb-3">{step.duration}</span>
-              <p className="text-sm text-muted-foreground">{step.description}</p>
+
+              <div className="md:mt-5">
+                <div className="flex items-baseline gap-2 mb-1.5">
+                  <h3 className="text-[15px] font-semibold tracking-tight">{step.title}</h3>
+                  <span className="text-[11px] text-primary font-medium">{step.time}</span>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed pr-4">{step.description}</p>
+              </div>
             </div>
           </AnimatedSection>
         ))}

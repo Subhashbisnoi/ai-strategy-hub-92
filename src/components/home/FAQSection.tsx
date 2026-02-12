@@ -1,78 +1,71 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Plus, Minus } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useState } from "react";
 
 const faqs = [
-  {
-    q: "How much does AI implementation typically cost?",
-    a: "Investment varies based on project scope. Strategy consulting engagements typically start at $5K, while custom AI agent development ranges from $10K to $50K. We provide detailed ROI projections, and most clients see 300-500% ROI within the first year.",
-  },
-  {
-    q: "How long does implementation take?",
-    a: "Most clients see initial results within 2-4 weeks. Full implementation of custom AI agents typically takes 4-8 weeks. We work in sprints to show progress early and often.",
-  },
-  {
-    q: "Do we need technical expertise on our team?",
-    a: "No technical expertise required. We handle everything—from architecture to deployment to maintenance. We also provide comprehensive training so your team can effectively use the AI solutions.",
-  },
-  {
-    q: "What industries do you work with?",
-    a: "We've delivered AI solutions across fintech (HSBC, M2P Fintech), e-commerce (1buy.ai), enterprise technology (TNQTech), and more. Our approach is industry-agnostic—we focus on your unique challenges.",
-  },
-  {
-    q: "How do you measure success?",
-    a: "We establish clear KPIs upfront: cost savings (30-50%), time reduction (40-60%), accuracy improvements (15-25%), or revenue impact. Every project includes a measurement framework aligned with your goals.",
-  },
-  {
-    q: "What if the AI solution doesn't deliver expected results?",
-    a: "We build in optimization periods and work iteratively. Our proven track record and hackathon wins demonstrate our commitment to results. We include performance guarantees in our agreements.",
-  },
-  {
-    q: "Can you integrate with our existing systems?",
-    a: "Yes. We specialize in system integration with CRMs, ERPs, databases, APIs, and legacy systems. Integration planning is part of our discovery process.",
-  },
-  {
-    q: "What happens after deployment?",
-    a: "We offer ongoing optimization and support. AI systems improve over time with more data. We monitor performance, make adjustments, and help scale successful implementations.",
-  },
+  { q: "How much does it cost?", a: "Strategy from $5K, development $10K-$50K depending on scope. Every project includes ROI projections upfront — most clients see 300-500% return within the first year." },
+  { q: "How fast can you deliver?", a: "Initial results in 2-4 weeks. Full solutions in 4-8 weeks. We work in agile sprints — you see working software from week one." },
+  { q: "Do we need a technical team?", a: "No. We handle architecture, development, deployment, and monitoring. We also train your team to own the solution long-term." },
+  { q: "What industries do you work with?", a: "Fintech, e-commerce, enterprise SaaS, manufacturing, and more. Our approach is industry-agnostic — we optimize for your specific workflows." },
+  { q: "What happens after launch?", a: "Ongoing optimization and support. AI systems improve over time. We monitor, adjust, and help you scale successful implementations." },
+  { q: "Can you integrate with our existing stack?", a: "Yes. CRMs, ERPs, databases, APIs, legacy systems. Integration planning is part of our discovery." },
 ];
 
-const FAQSection = () => (
-  <section className="py-24 bg-card/50">
-    <div className="container mx-auto px-6 max-w-3xl">
-      <AnimatedSection className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-          Frequently Asked <span className="text-gradient">Questions</span>
-        </h2>
-        <p className="text-muted-foreground">
-          Everything you need to know about working with us.
-        </p>
-      </AnimatedSection>
+const FAQSection = () => {
+  const [open, setOpen] = useState<number | null>(null);
 
-      <AnimatedSection>
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="border border-border rounded-xl px-6 bg-background"
-            >
-              <AccordionTrigger className="text-left font-heading font-medium text-sm hover:text-primary">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </AnimatedSection>
-    </div>
-  </section>
-);
+  return (
+    <section className="py-24 md:py-32 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-5 gap-12">
+          <AnimatedSection className="lg:col-span-2">
+            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">
+              FAQ
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] mb-4">
+              Questions{" "}
+              <span className="text-muted-foreground">we get asked a lot.</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Can't find what you're looking for?{" "}
+              <a href="/contact" className="text-primary font-medium hover:underline">
+                Reach out to us.
+              </a>
+            </p>
+          </AnimatedSection>
+
+          <div className="lg:col-span-3">
+            <div className="divide-y divide-border">
+              {faqs.map((faq, i) => (
+                <AnimatedSection key={i} delay={i * 0.05}>
+                  <button
+                    className="w-full flex items-start justify-between gap-4 py-5 text-left group"
+                    onClick={() => setOpen(open === i ? null : i)}
+                  >
+                    <span className={`text-[15px] font-medium tracking-tight transition-colors ${open === i ? 'text-primary' : 'text-foreground'}`}>
+                      {faq.q}
+                    </span>
+                    <span className="mt-0.5 shrink-0 text-muted-foreground">
+                      {open === i ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                    </span>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      open === i ? "max-h-48 pb-5" : "max-h-0"
+                    }`}
+                  >
+                    <p className="text-sm text-muted-foreground leading-relaxed pr-8">
+                      {faq.a}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default FAQSection;
