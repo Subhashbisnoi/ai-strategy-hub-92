@@ -41,8 +41,8 @@ const posts = [
   },
   {
     id: 5,
-    title: "From IIIT Chennai to AI Entrepreneurship: Our Journey",
-    excerpt: "The story of how two IIIT Chennai graduates combined academic rigor with startup hustle to build an AI consultancy.",
+    title: "From IIITians to AI Entrepreneurship: Our Journey",
+    excerpt: "The story of how two IIITians combined academic rigor with startup hustle to build an AI consultancy.",
     category: "Founder",
     author: "Subhash Bishnoi",
     date: "Dec 12, 2024",

@@ -10,14 +10,14 @@ const About = () => (
       <div className="container mx-auto px-6">
         <AnimatedSection>
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-2">About NexusAI</p>
+            <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-2">About CollabUp</p>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.08] mb-5">
               We build AI systems that{" "}
               <span className="text-gradient">run in production,</span>{" "}
               not in slide decks.
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg">
-              Founded by IIIT Chennai engineers with real experience shipping AI at enterprise scale — from fintech risk systems to healthcare monitoring to supply chain intelligence.
+              Founded by <span className="font-extrabold text-foreground">IIITians</span> with real experience shipping AI at enterprise scale — from fintech risk systems to healthcare monitoring to supply chain intelligence.
             </p>
           </div>
         </AnimatedSection>
@@ -65,13 +65,13 @@ const About = () => (
           </AnimatedSection>
           <div className="lg:col-span-3 space-y-4 text-[15px] text-muted-foreground leading-relaxed">
             <AnimatedSection><p>
-              We started NexusAI because we kept seeing the same problem: companies knew AI could transform their business, but couldn't get it to work in production. The technology was ready — the execution wasn't. Too many consultants selling strategy decks that never became working systems. Too many "AI-powered" demos that broke the moment real data hit them.
+              We started CollabUp because we kept seeing the same problem: companies knew AI could transform their business, but couldn't get it to work in production. The technology was ready — the execution wasn't. Too many consultants selling strategy decks that never became working systems. Too many "AI-powered" demos that broke the moment real data hit them.
             </p></AnimatedSection>
             <AnimatedSection><p>
               We come from the other side — <strong className="text-foreground">engineering teams that shipped AI at enterprise scale</strong>. Supply chain platforms that drove multi-million dollar sourcing decisions. Autonomous agents monitoring ICU patients in real time. Agentic systems running fintech operations end-to-end. NLP pipelines processing hundreds of thousands of documents. We've done this across industries, under real constraints, with real stakes.
             </p></AnimatedSection>
             <AnimatedSection><p>
-              NexusAI exists to bridge the gap between what AI can do and what most businesses actually get. We don't sell vision — we build systems. <strong className="text-foreground">If AI isn't the right answer for your problem, we'll tell you that on the first call.</strong>
+              CollabUp exists to bridge the gap between what AI can do and what most businesses actually get. We don't sell vision — we build systems. <strong className="text-foreground">If AI isn't the right answer for your problem, we'll tell you that on the first call.</strong>
             </p></AnimatedSection>
           </div>
         </div>
@@ -112,7 +112,7 @@ const About = () => (
       <div className="container mx-auto px-6 max-w-5xl">
         <AnimatedSection>
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-2">The founders</h2>
-          <p className="text-sm text-muted-foreground mb-10">IIIT Chennai engineers who've shipped AI at enterprise scale — across fintech, healthcare, supply chain, and publishing.</p>
+          <p className="text-sm text-muted-foreground mb-10"><span className="font-extrabold text-foreground">IIITians</span> who've shipped AI at enterprise scale — across fintech, healthcare, supply chain, and publishing.</p>
         </AnimatedSection>
 
         {/* Subhash */}
@@ -128,13 +128,13 @@ const About = () => (
               </div>
             </div>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-3">
-              Leads engineering at NexusAI. Worked for <strong className="text-foreground">1buy.ai</strong> — one of the fastest-growing startups in its segment — where he built AI-powered supply chain intelligence systems that saved over <strong className="text-foreground">$2M+ in procurement costs</strong> and automated risk scoring across 1.2M+ data records.
+              Leads engineering at CollabUp. Worked for <strong className="text-foreground">1buy.ai</strong> — one of the fastest-growing startups in its segment — where he built AI-powered supply chain intelligence systems that saved over <strong className="text-foreground">$2M+ in procurement costs</strong> and automated risk scoring across 1.2M+ data records.
             </p>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-3">
               Worked for <strong className="text-foreground">TNQ Tech</strong>, where he automated complex enterprise document workflows using AI — reducing manual processing time by <strong className="text-foreground">60%</strong> and saving hundreds of engineering hours annually.
             </p>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-5">
-              Built <strong className="text-foreground">CogniScale</strong> — a cloud-native enterprise conversational AI platform with multi-tenant architecture for scalable, context-aware AI assistants. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong>. IIIT Chennai.
+              Built <strong className="text-foreground">CogniScale</strong> — a cloud-native enterprise conversational AI platform with multi-tenant architecture for scalable, context-aware AI assistants. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong>.
             </p>
 
             <div className="flex flex-wrap gap-1.5 mb-4">
@@ -161,13 +161,13 @@ const About = () => (
               </div>
             </div>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-3">
-              Drives strategy and applied AI at NexusAI. Worked for <strong className="text-foreground">HSBC</strong> — one of the world's largest banking institutions — in financial crime analytics, bringing deep domain expertise in compliance, risk systems, and data-driven decision-making at global scale.
+              Drives strategy and applied AI at CollabUp. Worked for <strong className="text-foreground">HSBC</strong> — one of the world's largest banking institutions — in financial crime analytics, bringing deep domain expertise in compliance, risk systems, and data-driven decision-making at global scale.
             </p>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-3">
               Worked for <strong className="text-foreground">M2P Fintech</strong>, a leading fintech infrastructure firm, where he built agentic AI ecosystems and designed autonomous agents for operational intelligence and merchant analytics.
             </p>
             <p className="text-[14px] text-muted-foreground leading-relaxed mb-5">
-              <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong> and <strong className="text-foreground">BuildShip Agentic AI Hackathon</strong> winner. Leads the AI & CS Club at IIIT Chennai.
+              <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong> and <strong className="text-foreground">BuildShip Agentic AI Hackathon</strong> winner. Leads the AI & CS Club at prestigious institute of india.
             </p>
 
             <div className="flex flex-wrap gap-1.5 mb-4">

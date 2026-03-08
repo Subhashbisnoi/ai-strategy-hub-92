@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo_v1.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -33,8 +34,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-lg font-bold tracking-tight text-foreground">
-          NexusAI<span className="text-primary">.</span>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="CollabUp" className="h-16" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

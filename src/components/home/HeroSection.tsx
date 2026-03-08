@@ -19,7 +19,7 @@ const HeroSection = () => (
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            Now accepting new clients for Q1 2026
+            Now accepting new clients for Q2 2026
           </motion.div>
 
           <motion.h1
@@ -38,8 +38,9 @@ const HeroSection = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
+            Founded by <span className="font-extrabold text-foreground">IIITians</span> with real-world experience of building Scalable AI  systems across industries & Multiple Trusted Organisations.
             We design, build, and deploy custom AI agents and automation systems.
-            From strategy to production — built by IIIT&nbsp;Chennai engineers with real enterprise experience.
+            From strategy to production
           </motion.p>
 
           <motion.div

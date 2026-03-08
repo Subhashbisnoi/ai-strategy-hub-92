@@ -7,14 +7,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import AnimatedSection from "@/components/AnimatedSection";
 import { useToast } from "@/hooks/use-toast";
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiSSy4y4i2gS0Ezz-EiOUtf5NCCkteEwqO-TtD6MrZsk8ZfJPTl_zjVoT0dR-j9LfT/exec";
+
 const Contact = () => {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "", email: "", company: "", phone: "", interest: "", message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast({ title: "Please fill in all required fields", variant: "destructive" });
@@ -24,7 +27,22 @@ const Contact = () => {
       toast({ title: "Please enter a valid email", variant: "destructive" });
       return;
     }
-    setSubmitted(true);
+
+    setLoading(true);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      setSubmitted(true);
+      toast({ title: "Message sent successfully!" });
+    } catch {
+      toast({ title: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (field: string, value: string) =>
@@ -50,30 +68,37 @@ const Contact = () => {
                   <div className="w-9 h-9 rounded-lg bg-white border border-border/60 flex items-center justify-center">
                     <Mail className="h-4 w-4" />
                   </div>
-                  hello@nexusai.com
+                  collabup4@gmail.com
                 </a>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <div className="w-9 h-9 rounded-lg bg-white border border-border/60 flex items-center justify-center">
                     <Phone className="h-4 w-4" />
                   </div>
-                  +91 (XXX) XXX-XXXX
+                  <div className="flex flex-col">
+                    <span>+91 8955759727 (Subhash)</span>
+                    <span>+91 9305654811 (Rishit)</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <div className="w-9 h-9 rounded-lg bg-white border border-border/60 flex items-center justify-center">
                     <MapPin className="h-4 w-4" />
                   </div>
-                  Chennai, India
+                  <div className="flex flex-col">
+                  <span>Delhi, India</span>
+                  <span>Hyderabad, India</span>
+                  </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-6 border-t border-border/50">
                 <p className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground mb-3">Connect with founders</p>
                 <div className="space-y-2">
-                  {["Subhash Bishnoi", "Rishit Rastogi"].map((name) => (
-                    <a key={name} href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                      <Linkedin className="h-3.5 w-3.5" /> {name}
+                  <a href="https://linkedin.com/in/subhash-bishnoi-a068a42b1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                      <Linkedin className="h-3.5 w-3.5" /> Subhash Bishnoi
                     </a>
-                  ))}
+                    <a href="https://linkedin.com/in/rishit-rastogi-1aa545208" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                      <Linkedin className="h-3.5 w-3.5" /> Rishit Rastogi
+                    </a>
                 </div>
               </div>
             </AnimatedSection>
@@ -124,9 +149,18 @@ const Contact = () => {
                     <label className="text-xs font-medium mb-1.5 block text-foreground">Message *</label>
                     <Textarea placeholder="Tell us about your project, challenges, and timeline..." rows={5} value={form.message} onChange={(e) => handleChange("message", e.target.value)} className="rounded-lg bg-secondary/30 border-border/50 resize-none" />
                   </div>
-                  <Button type="submit" className="w-full rounded-lg h-11 text-sm font-semibold">
-                    <Send className="mr-2 h-4 w-4" />
-                    Send message
+                  <Button type="submit" className="w-full rounded-lg h-11 text-sm font-semibold" disabled={loading}>
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending...
+                      </span>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Send message
+                      </>
+                    )}
                   </Button>
                   <p className="text-[11px] text-muted-foreground/60 text-center">
                     We respond within 24 hours. No spam, ever.

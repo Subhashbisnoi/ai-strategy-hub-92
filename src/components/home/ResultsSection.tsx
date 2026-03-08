@@ -39,7 +39,7 @@ const ResultsSection = () => (
         <div className="lg:col-span-3 space-y-6">
           {[
             {
-              quote: "NexusAI didn't just build us an AI system — they fundamentally changed how our operations run. We went from 3-day turnarounds to real-time processing.",
+              quote: "CollabUp didn't just build us an AI system — they fundamentally changed how our operations run. We went from 3-day turnarounds to real-time processing.",
               author: "Engineering Lead",
               company: "1buy.ai",
               result: "10x faster processing",

@@ -31,7 +31,7 @@ const FoundersSection = () => (
               </div>
             </div>
             <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">
-              Leads engineering at NexusAI. Worked for <strong className="text-foreground">1buy.ai</strong> — fastest-growing startup in its segment — saving $2M+ in procurement costs. Automated complex workflows at <strong className="text-foreground">TNQ Tech</strong>, cutting processing time by 60%. Built <strong className="text-foreground">CogniScale</strong>, an enterprise conversational AI platform. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong>.
+              Leads engineering at CollabUp. Worked for <strong className="text-foreground">1buy.ai</strong> — fastest-growing startup in its segment — saving $2M+ in procurement costs. Automated complex workflows at <strong className="text-foreground">TNQ Tech</strong>, cutting processing time by 60%. Built <strong className="text-foreground">CogniScale</strong>, an enterprise conversational AI platform. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong>.
             </p>
             <div className="flex flex-wrap gap-1.5 mb-4">
               {["Production ML", "RAG & LLMs", "NLP", "Conversational AI", "LangChain"].map((t) => (
@@ -58,7 +58,7 @@ const FoundersSection = () => (
               </div>
             </div>
             <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">
-              Drives strategy and applied AI at NexusAI. Worked for <strong className="text-foreground">HSBC</strong> — one of the world's largest banks — in financial crime analytics. Built agentic AI ecosystems at <strong className="text-foreground">M2P Fintech</strong>, a leading fintech firm. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong> and <strong className="text-foreground">BuildShip Agentic AI Hackathon</strong> winner.
+              Drives strategy and applied AI at CollabUp. Worked for <strong className="text-foreground">HSBC</strong> — one of the world's largest banks — in financial crime analytics. Built agentic AI ecosystems at <strong className="text-foreground">M2P Fintech</strong>, a leading fintech firm. <strong className="text-foreground">IEEE Hacksagon 2025 Winner</strong> and <strong className="text-foreground">BuildShip Agentic AI Hackathon</strong> winner.
             </p>
             <div className="flex flex-wrap gap-1.5 mb-4">
               {["Agentic AI", "Financial Crime AI", "Fintech AI", "CrewAI", "LangGraph"].map((t) => (
