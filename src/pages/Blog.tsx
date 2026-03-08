@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
+import { useToast } from "@/hooks/use-toast";
+
+const NEWSLETTER_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz4Illz7CzQVuQHmrdWFHsx7Wg0rE5B4-z_Lx8hdBVfgZPhCzZYPUvdxNreqvf-SCQ/exec";
 
 const posts = [
   {
@@ -66,89 +70,128 @@ const categoryColors: Record<string, string> = {
   Founder: "text-primary bg-primary/10",
 };
 
-const Blog = () => (
-  <main className="pt-24">
-    {/* Hero */}
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-15" />
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        <AnimatedSection>
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            AI Insights & <span className="text-gradient">Innovation</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Expert perspectives on AI strategy, implementation, and industry trends.
-          </p>
-        </AnimatedSection>
-      </div>
-    </section>
+const Blog = () => {
+  const { toast } = useToast();
+  const [subEmail, setSubEmail] = useState("");
+  const [subLoading, setSubLoading] = useState(false);
+  const [subDone, setSubDone] = useState(false);
 
-    {/* Posts Grid */}
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post, i) => (
-            <AnimatedSection key={post.id} delay={i * 0.05}>
-              <article className="p-6 rounded-xl bg-card border border-border card-hover h-full flex flex-col">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${categoryColors[post.category] || "text-muted-foreground bg-muted"}`}>
-                    {post.category}
-                  </span>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Clock className="h-3 w-3" /> {post.readTime}
-                  </span>
-                </div>
+  const handleSubscribe = async () => {
+    if (!subEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(subEmail)) {
+      toast({ title: "Please enter a valid email", variant: "destructive" });
+      return;
+    }
+    setSubLoading(true);
+    try {
+      await fetch(NEWSLETTER_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: subEmail }),
+      });
+      setSubDone(true);
+      toast({ title: "Thanks for subscribing! Check your inbox 🎉" });
+    } catch {
+      toast({ title: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setSubLoading(false);
+    }
+  };
 
-                <h2 className="font-heading text-lg font-semibold mb-3 leading-snug">
-                  {post.title}
-                </h2>
-
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <div className="text-xs text-muted-foreground">
-                    <span className="text-foreground font-medium">{post.author}</span>
-                    <span className="mx-2">·</span>
-                    {post.date}
-                  </div>
-                  <span className="text-primary text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">
-                    Read <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </article>
-            </AnimatedSection>
-          ))}
+  return (
+    <main className="pt-24">
+      {/* Hero */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-15" />
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <AnimatedSection>
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+              AI Insights & <span className="text-gradient">Innovation</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              Expert perspectives on AI strategy, implementation, and industry trends.
+            </p>
+          </AnimatedSection>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Newsletter */}
-    <section className="py-20 bg-card/50">
-      <div className="container mx-auto px-6 max-w-xl text-center">
-        <AnimatedSection>
-          <h2 className="text-2xl font-heading font-bold mb-4">
-            Get AI Insights in Your Inbox
-          </h2>
-          <p className="text-sm text-muted-foreground mb-6">
-            Weekly insights on AI strategy, implementation tips, and industry trends. No spam.
-          </p>
-          <div className="flex gap-3">
-            <input
-              type="email"
-              placeholder="you@company.com"
-              className="flex-1 px-4 py-2.5 rounded-lg bg-background border border-input text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-              maxLength={255}
-            />
-            <button className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium glow-sm hover:opacity-90 transition-opacity">
-              Subscribe
-            </button>
+      {/* Posts Grid */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post, i) => (
+              <AnimatedSection key={post.id} delay={i * 0.05}>
+                <article className="p-6 rounded-xl bg-card border border-border card-hover h-full flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${categoryColors[post.category] || "text-muted-foreground bg-muted"}`}>
+                      {post.category}
+                    </span>
+                    <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Clock className="h-3 w-3" /> {post.readTime}
+                    </span>
+                  </div>
+
+                  <h2 className="font-heading text-lg font-semibold mb-3 leading-snug">
+                    {post.title}
+                  </h2>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                    <div className="text-xs text-muted-foreground">
+                      <span className="text-foreground font-medium">{post.author}</span>
+                      <span className="mx-2">·</span>
+                      {post.date}
+                    </div>
+                    <span className="text-primary text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">
+                      Read <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </div>
+                </article>
+              </AnimatedSection>
+            ))}
           </div>
-        </AnimatedSection>
-      </div>
-    </section>
-  </main>
-);
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-20 bg-card/50">
+        <div className="container mx-auto px-6 max-w-xl text-center">
+          <AnimatedSection>
+            <h2 className="text-2xl font-heading font-bold mb-4">
+              Get AI Insights in Your Inbox
+            </h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Weekly insights on AI strategy, implementation tips, and industry trends. No spam.
+            </p>
+            {subDone ? (
+              <p className="text-primary font-medium">✓ You're subscribed! Check your inbox.</p>
+            ) : (
+              <div className="flex gap-3">
+                <input
+                  type="email"
+                  placeholder="you@company.com"
+                  value={subEmail}
+                  onChange={(e) => setSubEmail(e.target.value)}
+                  className="flex-1 px-4 py-2.5 rounded-lg bg-background border border-input text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  maxLength={255}
+                />
+                <button
+                  onClick={handleSubscribe}
+                  disabled={subLoading}
+                  className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium glow-sm hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {subLoading ? "Sending..." : "Subscribe"}
+                </button>
+              </div>
+            )}
+          </AnimatedSection>
+        </div>
+      </section>
+    </main>
+  );
+};
 
 export default Blog;
