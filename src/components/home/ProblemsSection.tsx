@@ -6,7 +6,7 @@ import m2pLogo from "@/assets/M2P.png";
 
 const logos = [
   { name: "HSBC", src: hsbcLogo },
-  //{ name: "1buy.ai", src: onebuyLogo },
+  { name: "1buy.ai", src: onebuyLogo },
   { name: "TNQ Tech", src: tnqLogo },
   { name: "M2P Fintech", src: m2pLogo },
 ];
