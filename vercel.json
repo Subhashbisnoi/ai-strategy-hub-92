@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://finai-backend.onrender.com/api/$1" },
+    { "source": "/api/(.*)", "destination": "https://ai-strategy-hub-92.onrender.com/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
