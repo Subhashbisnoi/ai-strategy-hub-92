@@ -1,0 +1,21 @@
+sku,name,category,cost_price,selling_price,current_stock,reorder_point,safety_stock,eoq,supplier_lead_time_days,units_sold_30d
+SKU-SERVICES-001,Audit Flagship (Hero),Audit,2894,6768,809,372,197,578,5,250
+SKU-SERVICES-002,Retainer Product 2,Retainer,786,2151,40,35,17,96,9,40
+SKU-SERVICES-003,Retainer Product 3,Retainer,3343,8906,173,49,22,128,9,1
+SKU-SERVICES-004,Audit Product 4,Audit,4478,10935,65,25,13,75,3,45
+SKU-SERVICES-005,Consulting Product 5,Consulting,2344,5802,67,44,26,64,6,20
+SKU-SERVICES-006,Retainer Product 6,Retainer,2398,6085,9,18,8,21,10,21
+SKU-SERVICES-007,Audit Product 7,Audit,4586,11156,164,61,33,121,14,11
+SKU-SERVICES-008,Audit Product 8,Audit,4873,12665,103,59,32,177,9,10
+SKU-SERVICES-009,Consulting Product 9,Consulting,3144,7133,116,97,49,98,12,32
+SKU-SERVICES-010,Implementation Product 10,Implementation,4355,11419,94,38,20,115,6,11
+SKU-SERVICES-011,Audit Product 11,Audit,315,764,6,12,6,23,3,25
+SKU-SERVICES-012,Audit Product 12,Audit,3101,7307,0,0,0,0,10,38
+SKU-SERVICES-013,Consulting Product 13,Consulting,4486,10302,80,23,9,55,14,1
+SKU-SERVICES-014,Retainer Product 14,Retainer,1774,4026,13,51,21,82,6,24
+SKU-SERVICES-015,Audit Product 15,Audit,1239,3121,9,7,3,17,4,11
+SKU-SERVICES-016,Consulting Product 16,Consulting,674,1597,71,41,15,58,13,50
+SKU-SERVICES-017,Implementation Product 17,Implementation,708,1609,8,13,7,13,3,39
+SKU-SERVICES-018,Audit Product 18,Audit,4518,10696,0,0,0,0,11,10
+SKU-SERVICES-019,Consulting Product 19,Consulting,4199,10195,31,35,20,82,5,48
+SKU-SERVICES-020,Implementation Product 20,Implementation,1953,4696,25,13,6,20,7,15

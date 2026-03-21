@@ -1,0 +1,15 @@
+name,email,phone,gstin,address,payment_terms
+Services Client 1,contact@client1.com,9000000001,29AABCU0001R1ZC,Pune,45
+Services Client 2,contact@client2.com,9000000002,29AABCU0002R1ZB,Bangalore,15
+Services Client 3,contact@client3.com,9000000003,29AABCU0003R1ZC,Bangalore,45
+Services Client 4,contact@client4.com,9000000004,29AABCU0004R1ZA,Delhi,15
+Services Client 5,contact@client5.com,9000000005,29AABCU0005R1ZC,Mumbai,15
+Services Client 6,contact@client6.com,9000000006,29AABCU0006R1ZC,Hyderabad,30
+Services Client 7,contact@client7.com,9000000007,29AABCU0007R1ZC,Delhi,15
+Services Client 8,contact@client8.com,9000000008,29AABCU0008R1ZB,Delhi,15
+Services Client 9,contact@client9.com,9000000009,29AABCU0009R1ZC,Pune,45
+Services Client 10,contact@client10.com,9000000010,29AABCU0010R1ZB,Mumbai,30
+Services Client 11,contact@client11.com,9000000011,29AABCU0011R1ZC,Hyderabad,45
+Services Client 12,contact@client12.com,9000000012,29AABCU0012R1ZA,Hyderabad,60
+Services Client 13,contact@client13.com,9000000013,29AABCU0013R1ZC,Hyderabad,45
+Services Client 14,contact@client14.com,9000000014,29AABCU0014R1ZB,Hyderabad,15

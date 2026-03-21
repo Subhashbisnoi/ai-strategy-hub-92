@@ -1,0 +1,9 @@
+sku,name,category,cost_price,selling_price,current_stock,reorder_point,safety_stock,eoq,supplier_lead_time_days,units_sold_30d
+SKU-SAAS-001,Monthly Sub Flagship (Hero),Monthly Sub,406,2707,99999,0,0,99999,0,338
+SKU-SAAS-002,Monthly Sub Product 2,Monthly Sub,290,1933,99999,0,0,99999,0,39
+SKU-SAAS-003,Add-on Product 3,Add-on,358,2387,99999,0,0,99999,0,4
+SKU-SAAS-004,Annual Sub Product 4,Annual Sub,438,2920,99999,0,0,99999,0,25
+SKU-SAAS-005,Setup Fee Product 5,Setup Fee,47,313,99999,0,0,99999,0,33
+SKU-SAAS-006,Annual Sub Product 6,Annual Sub,206,1373,99999,0,0,99999,0,47
+SKU-SAAS-007,Setup Fee Product 7,Setup Fee,246,1640,99999,0,0,99999,0,2
+SKU-SAAS-008,Annual Sub Product 8,Annual Sub,90,600,99999,0,0,99999,0,5

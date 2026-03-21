@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment & secrets
+.env
+src/.env
+*.env.local
+
+# Database
+*.db
+finai.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Misc
+nohup.out

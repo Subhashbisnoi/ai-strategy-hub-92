@@ -1,0 +1,201 @@
+sku,name,category,cost_price,selling_price,current_stock,reorder_point,safety_stock,eoq,supplier_lead_time_days,units_sold_30d
+SKU-RETAIL-001,Home Goods Flagship (Hero),Home Goods,3441,5559,45,16,7,42,9,97
+SKU-RETAIL-002,Electronics Product 2,Electronics,3314,4783,69,40,16,99,12,13
+SKU-RETAIL-003,Home Goods Product 3,Home Goods,791,1107,0,0,0,0,4,5
+SKU-RETAIL-004,Home Goods Product 4,Home Goods,4457,7403,228,64,24,156,10,43
+SKU-RETAIL-005,Accessories Product 5,Accessories,3765,5701,0,0,0,0,9,29
+SKU-RETAIL-006,Apparel Product 6,Apparel,4991,8329,30,12,6,28,6,37
+SKU-RETAIL-007,Home Goods Product 7,Home Goods,1335,2246,67,93,51,131,14,27
+SKU-RETAIL-008,Apparel Product 8,Apparel,1527,2393,7,17,8,37,9,23
+SKU-RETAIL-009,Electronics Product 9,Electronics,4209,6743,0,0,0,0,14,9
+SKU-RETAIL-010,Electronics Product 10,Electronics,632,953,71,46,26,111,10,32
+SKU-RETAIL-011,Apparel Product 11,Apparel,3257,5166,22,80,44,101,9,21
+SKU-RETAIL-012,Home Goods Product 12,Home Goods,3408,5294,17,11,5,21,3,41
+SKU-RETAIL-013,Home Goods Product 13,Home Goods,4752,7899,0,0,0,0,13,23
+SKU-RETAIL-014,Apparel Product 14,Apparel,2506,4218,82,48,28,67,4,3
+SKU-RETAIL-015,Electronics Product 15,Electronics,3620,5098,59,24,12,47,12,26
+SKU-RETAIL-016,Accessories Product 16,Accessories,2720,3865,72,42,21,70,7,42
+SKU-RETAIL-017,Electronics Product 17,Electronics,1398,2274,78,36,16,54,10,32
+SKU-RETAIL-018,Electronics Product 18,Electronics,3349,5295,168,87,39,135,12,0
+SKU-RETAIL-019,Accessories Product 19,Accessories,3580,5401,86,78,45,84,11,27
+SKU-RETAIL-020,Home Goods Product 20,Home Goods,2294,3249,33,24,12,30,6,46
+SKU-RETAIL-021,Accessories Product 21,Accessories,3706,5613,55,87,47,179,8,10
+SKU-RETAIL-022,Accessories Product 22,Accessories,4263,7116,0,0,0,0,13,11
+SKU-RETAIL-023,Accessories Product 23,Accessories,1810,2760,0,0,0,0,8,20
+SKU-RETAIL-024,Accessories Product 24,Accessories,1374,2186,0,0,0,0,8,8
+SKU-RETAIL-025,Electronics Product 25,Electronics,3414,4772,187,84,48,140,12,46
+SKU-RETAIL-026,Home Goods Product 26,Home Goods,2225,3256,255,87,42,194,9,2
+SKU-RETAIL-027,Electronics Product 27,Electronics,4869,6847,75,63,24,75,13,46
+SKU-RETAIL-028,Home Goods Product 28,Home Goods,2585,3987,0,0,0,0,8,34
+SKU-RETAIL-029,Accessories Product 29,Accessories,3287,5378,0,0,0,0,4,25
+SKU-RETAIL-030,Accessories Product 30,Accessories,459,754,144,46,19,102,9,32
+SKU-RETAIL-031,Electronics Product 31,Electronics,4021,5594,26,33,17,63,8,26
+SKU-RETAIL-032,Electronics Product 32,Electronics,4247,6490,0,0,0,0,7,22
+SKU-RETAIL-033,Apparel Product 33,Apparel,3697,5363,22,13,7,19,3,20
+SKU-RETAIL-034,Electronics Product 34,Electronics,2777,4499,0,0,0,0,8,2
+SKU-RETAIL-035,Home Goods Product 35,Home Goods,1941,2955,0,0,0,0,13,34
+SKU-RETAIL-036,Electronics Product 36,Electronics,4719,7281,12,6,3,13,3,25
+SKU-RETAIL-037,Home Goods Product 37,Home Goods,3272,4686,65,69,36,76,11,45
+SKU-RETAIL-038,Home Goods Product 38,Home Goods,4238,6154,21,54,27,105,9,28
+SKU-RETAIL-039,Apparel Product 39,Apparel,2612,4101,42,17,9,30,8,44
+SKU-RETAIL-040,Apparel Product 40,Apparel,287,404,97,87,45,228,14,18
+SKU-RETAIL-041,Accessories Product 41,Accessories,4655,7877,44,34,16,37,9,28
+SKU-RETAIL-042,Electronics Product 42,Electronics,3135,5076,83,36,21,59,5,0
+SKU-RETAIL-043,Home Goods Product 43,Home Goods,2833,4012,0,0,0,0,4,21
+SKU-RETAIL-044,Home Goods Product 44,Home Goods,3325,5136,48,37,15,77,11,1
+SKU-RETAIL-045,Home Goods Product 45,Home Goods,1646,2653,4,17,8,27,9,35
+SKU-RETAIL-046,Home Goods Product 46,Home Goods,4338,6009,135,75,40,181,7,15
+SKU-RETAIL-047,Accessories Product 47,Accessories,75,123,63,36,15,51,7,26
+SKU-RETAIL-048,Electronics Product 48,Electronics,952,1404,20,17,9,26,8,47
+SKU-RETAIL-049,Accessories Product 49,Accessories,2612,4044,16,5,2,12,3,7
+SKU-RETAIL-050,Home Goods Product 50,Home Goods,4072,5732,12,5,2,9,3,17
+SKU-RETAIL-051,Apparel Product 51,Apparel,941,1471,0,0,0,0,8,29
+SKU-RETAIL-052,Home Goods Product 52,Home Goods,4968,7285,98,38,22,91,8,43
+SKU-RETAIL-053,Accessories Product 53,Accessories,1735,2491,245,76,40,174,9,24
+SKU-RETAIL-054,Apparel Product 54,Apparel,856,1307,279,87,45,245,14,2
+SKU-RETAIL-055,Home Goods Product 55,Home Goods,938,1370,131,41,23,105,9,40
+SKU-RETAIL-056,Electronics Product 56,Electronics,1082,1722,64,63,35,108,14,17
+SKU-RETAIL-057,Electronics Product 57,Electronics,611,985,12,13,5,34,8,1
+SKU-RETAIL-058,Apparel Product 58,Apparel,3703,6080,23,34,16,65,9,41
+SKU-RETAIL-059,Accessories Product 59,Accessories,1473,2334,18,14,6,24,8,33
+SKU-RETAIL-060,Home Goods Product 60,Home Goods,1680,2841,8,29,17,68,6,9
+SKU-RETAIL-061,Apparel Product 61,Apparel,715,1045,485,123,67,324,14,6
+SKU-RETAIL-062,Electronics Product 62,Electronics,4092,6662,139,42,18,107,6,1
+SKU-RETAIL-063,Home Goods Product 63,Home Goods,3955,6322,70,24,14,66,5,39
+SKU-RETAIL-064,Accessories Product 64,Accessories,4608,6449,75,43,23,100,5,37
+SKU-RETAIL-065,Home Goods Product 65,Home Goods,3236,5038,63,34,12,57,11,11
+SKU-RETAIL-066,Electronics Product 66,Electronics,4883,7088,108,43,19,76,8,32
+SKU-RETAIL-067,Apparel Product 67,Apparel,1244,1919,148,64,37,190,9,50
+SKU-RETAIL-068,Accessories Product 68,Accessories,3803,5932,209,86,51,178,7,25
+SKU-RETAIL-069,Accessories Product 69,Accessories,2529,3753,100,125,70,177,11,2
+SKU-RETAIL-070,Electronics Product 70,Electronics,4434,7106,45,60,30,79,10,11
+SKU-RETAIL-071,Home Goods Product 71,Home Goods,2392,3527,35,21,11,38,5,18
+SKU-RETAIL-072,Home Goods Product 72,Home Goods,242,362,0,0,0,0,10,15
+SKU-RETAIL-073,Home Goods Product 73,Home Goods,856,1387,196,106,36,135,14,4
+SKU-RETAIL-074,Accessories Product 74,Accessories,3379,4864,92,30,17,69,13,49
+SKU-RETAIL-075,Home Goods Product 75,Home Goods,1883,3039,71,48,24,93,8,12
+SKU-RETAIL-076,Home Goods Product 76,Home Goods,3759,6038,45,17,7,35,10,13
+SKU-RETAIL-077,Electronics Product 77,Electronics,1774,2531,13,30,12,31,9,39
+SKU-RETAIL-078,Electronics Product 78,Electronics,2495,3735,122,107,51,158,14,39
+SKU-RETAIL-079,Electronics Product 79,Electronics,3180,5038,0,0,0,0,5,21
+SKU-RETAIL-080,Home Goods Product 80,Home Goods,223,358,182,45,25,123,4,43
+SKU-RETAIL-081,Electronics Product 81,Electronics,3083,4781,27,10,5,22,5,9
+SKU-RETAIL-082,Home Goods Product 82,Home Goods,4957,7239,41,14,5,29,3,18
+SKU-RETAIL-083,Accessories Product 83,Accessories,1178,1779,78,32,16,64,4,30
+SKU-RETAIL-084,Home Goods Product 84,Home Goods,4271,6499,279,113,65,299,12,40
+SKU-RETAIL-085,Electronics Product 85,Electronics,2003,3143,148,63,33,152,6,13
+SKU-RETAIL-086,Home Goods Product 86,Home Goods,3097,5185,28,18,6,35,3,0
+SKU-RETAIL-087,Apparel Product 87,Apparel,3455,5670,336,98,38,266,12,44
+SKU-RETAIL-088,Apparel Product 88,Apparel,4565,6384,172,59,31,153,14,18
+SKU-RETAIL-089,Home Goods Product 89,Home Goods,2032,2844,45,42,24,98,6,17
+SKU-RETAIL-090,Home Goods Product 90,Home Goods,3448,5013,81,53,27,116,13,27
+SKU-RETAIL-091,Apparel Product 91,Apparel,2529,3739,4,18,9,38,3,9
+SKU-RETAIL-092,Electronics Product 92,Electronics,2844,4573,0,0,0,0,3,8
+SKU-RETAIL-093,Home Goods Product 93,Home Goods,238,333,128,70,25,169,9,36
+SKU-RETAIL-094,Apparel Product 94,Apparel,4535,6794,33,18,8,51,5,25
+SKU-RETAIL-095,Electronics Product 95,Electronics,1739,2514,40,69,41,106,7,46
+SKU-RETAIL-096,Home Goods Product 96,Home Goods,3546,5437,4,5,2,15,3,5
+SKU-RETAIL-097,Electronics Product 97,Electronics,3658,5440,96,66,30,152,9,21
+SKU-RETAIL-098,Electronics Product 98,Electronics,902,1275,9,18,8,49,10,27
+SKU-RETAIL-099,Electronics Product 99,Electronics,2354,3374,85,43,22,119,7,6
+SKU-RETAIL-100,Electronics Product 100,Electronics,1250,1766,12,49,23,75,13,25
+SKU-RETAIL-101,Apparel Product 101,Apparel,3674,5853,103,86,46,87,10,26
+SKU-RETAIL-102,Apparel Product 102,Apparel,2769,4312,58,59,35,113,6,38
+SKU-RETAIL-103,Electronics Product 103,Electronics,3238,5442,12,11,5,17,3,49
+SKU-RETAIL-104,Apparel Product 104,Apparel,3543,5646,73,32,12,98,10,7
+SKU-RETAIL-105,Accessories Product 105,Accessories,663,998,125,45,21,120,8,29
+SKU-RETAIL-106,Electronics Product 106,Electronics,577,911,7,30,10,74,10,29
+SKU-RETAIL-107,Accessories Product 107,Accessories,1051,1459,168,54,30,129,12,2
+SKU-RETAIL-108,Apparel Product 108,Apparel,1980,3305,0,0,0,0,14,17
+SKU-RETAIL-109,Electronics Product 109,Electronics,1768,2852,9,45,19,120,13,43
+SKU-RETAIL-110,Home Goods Product 110,Home Goods,270,456,13,49,25,137,6,48
+SKU-RETAIL-111,Accessories Product 111,Accessories,634,1070,8,8,4,11,4,10
+SKU-RETAIL-112,Accessories Product 112,Accessories,557,833,0,0,0,0,9,38
+SKU-RETAIL-113,Home Goods Product 113,Home Goods,650,1055,156,55,30,134,5,27
+SKU-RETAIL-114,Apparel Product 114,Apparel,1660,2533,14,27,15,32,4,12
+SKU-RETAIL-115,Electronics Product 115,Electronics,2792,4362,34,24,12,29,12,11
+SKU-RETAIL-116,Accessories Product 116,Accessories,4248,5896,0,0,0,0,11,25
+SKU-RETAIL-117,Apparel Product 117,Apparel,3082,4760,184,79,39,215,10,23
+SKU-RETAIL-118,Apparel Product 118,Apparel,4705,6595,99,24,11,72,13,17
+SKU-RETAIL-119,Apparel Product 119,Apparel,1603,2344,16,23,8,67,5,23
+SKU-RETAIL-120,Accessories Product 120,Accessories,4761,7798,26,26,15,47,11,37
+SKU-RETAIL-121,Electronics Product 121,Electronics,3354,4812,9,19,7,24,3,20
+SKU-RETAIL-122,Accessories Product 122,Accessories,379,625,204,88,43,209,9,30
+SKU-RETAIL-123,Accessories Product 123,Accessories,3814,5705,9,4,1,10,3,42
+SKU-RETAIL-124,Apparel Product 124,Apparel,1705,2583,61,61,33,180,14,48
+SKU-RETAIL-125,Electronics Product 125,Electronics,3171,5127,0,0,0,0,11,47
+SKU-RETAIL-126,Electronics Product 126,Electronics,1089,1775,102,36,12,104,12,12
+SKU-RETAIL-127,Accessories Product 127,Accessories,2437,3781,94,30,16,72,7,42
+SKU-RETAIL-128,Home Goods Product 128,Home Goods,2907,4663,45,20,11,32,9,14
+SKU-RETAIL-129,Electronics Product 129,Electronics,4099,6693,148,39,15,114,6,20
+SKU-RETAIL-130,Home Goods Product 130,Home Goods,824,1267,5,7,3,7,4,23
+SKU-RETAIL-131,Home Goods Product 131,Home Goods,2345,3635,23,12,4,35,8,14
+SKU-RETAIL-132,Accessories Product 132,Accessories,2751,4302,80,43,22,125,7,1
+SKU-RETAIL-133,Apparel Product 133,Apparel,4908,7089,14,8,3,19,5,45
+SKU-RETAIL-134,Apparel Product 134,Apparel,1252,1959,95,112,42,112,14,48
+SKU-RETAIL-135,Home Goods Product 135,Home Goods,3094,5143,99,26,14,71,3,1
+SKU-RETAIL-136,Electronics Product 136,Electronics,1961,2808,0,0,0,0,3,0
+SKU-RETAIL-137,Accessories Product 137,Accessories,4328,6778,0,0,0,0,9,21
+SKU-RETAIL-138,Electronics Product 138,Electronics,1174,1872,0,0,0,0,9,11
+SKU-RETAIL-139,Electronics Product 139,Electronics,766,1113,103,45,15,72,6,25
+SKU-RETAIL-140,Accessories Product 140,Accessories,4458,6696,49,52,22,78,6,1
+SKU-RETAIL-141,Accessories Product 141,Accessories,98,138,0,0,0,0,8,18
+SKU-RETAIL-142,Apparel Product 142,Apparel,4671,7355,125,54,18,139,9,35
+SKU-RETAIL-143,Electronics Product 143,Electronics,2200,3075,45,44,16,66,7,30
+SKU-RETAIL-144,Accessories Product 144,Accessories,3267,5135,126,135,75,155,12,33
+SKU-RETAIL-145,Electronics Product 145,Electronics,3353,5263,217,132,67,174,13,14
+SKU-RETAIL-146,Home Goods Product 146,Home Goods,184,282,29,20,10,23,5,20
+SKU-RETAIL-147,Accessories Product 147,Accessories,1863,2592,311,101,53,222,12,34
+SKU-RETAIL-148,Electronics Product 148,Electronics,3517,5552,0,0,0,0,14,2
+SKU-RETAIL-149,Accessories Product 149,Accessories,2760,4075,40,29,17,32,6,24
+SKU-RETAIL-150,Accessories Product 150,Accessories,4592,7636,46,33,13,50,4,33
+SKU-RETAIL-151,Accessories Product 151,Accessories,1839,2694,102,35,20,84,3,23
+SKU-RETAIL-152,Accessories Product 152,Accessories,3530,5932,18,16,7,28,9,46
+SKU-RETAIL-153,Accessories Product 153,Accessories,116,188,32,51,29,149,11,44
+SKU-RETAIL-154,Home Goods Product 154,Home Goods,287,441,45,41,21,103,4,17
+SKU-RETAIL-155,Apparel Product 155,Apparel,932,1446,61,89,34,90,11,32
+SKU-RETAIL-156,Apparel Product 156,Apparel,2447,3530,0,0,0,0,9,38
+SKU-RETAIL-157,Accessories Product 157,Accessories,2201,3721,58,72,40,94,8,34
+SKU-RETAIL-158,Electronics Product 158,Electronics,2906,4626,222,87,51,203,12,8
+SKU-RETAIL-159,Electronics Product 159,Electronics,2235,3725,130,36,15,104,7,49
+SKU-RETAIL-160,Apparel Product 160,Apparel,356,532,63,85,50,203,7,44
+SKU-RETAIL-161,Electronics Product 161,Electronics,3212,4795,103,41,23,100,6,25
+SKU-RETAIL-162,Home Goods Product 162,Home Goods,1980,2841,0,0,0,0,3,14
+SKU-RETAIL-163,Electronics Product 163,Electronics,831,1236,20,68,40,128,7,10
+SKU-RETAIL-164,Accessories Product 164,Accessories,4342,6087,61,36,12,58,12,19
+SKU-RETAIL-165,Apparel Product 165,Apparel,1655,2401,117,57,27,170,10,49
+SKU-RETAIL-166,Electronics Product 166,Electronics,1787,2934,67,35,14,47,7,9
+SKU-RETAIL-167,Home Goods Product 167,Home Goods,1383,2160,6,15,6,38,9,37
+SKU-RETAIL-168,Accessories Product 168,Accessories,3876,6198,186,83,47,197,12,46
+SKU-RETAIL-169,Accessories Product 169,Accessories,4910,7432,3,12,6,14,3,29
+SKU-RETAIL-170,Apparel Product 170,Apparel,1518,2384,30,56,21,148,7,29
+SKU-RETAIL-171,Electronics Product 171,Electronics,1229,1780,64,84,45,86,13,38
+SKU-RETAIL-172,Accessories Product 172,Accessories,902,1252,535,139,74,391,13,13
+SKU-RETAIL-173,Apparel Product 173,Apparel,687,1049,64,73,40,201,11,41
+SKU-RETAIL-174,Electronics Product 174,Electronics,2836,4069,42,40,16,52,8,36
+SKU-RETAIL-175,Electronics Product 175,Electronics,1743,2803,26,23,13,27,10,38
+SKU-RETAIL-176,Accessories Product 176,Accessories,2582,3832,64,31,17,62,14,6
+SKU-RETAIL-177,Electronics Product 177,Electronics,4123,6807,111,98,53,123,9,14
+SKU-RETAIL-178,Home Goods Product 178,Home Goods,2766,3981,49,34,16,56,9,1
+SKU-RETAIL-179,Electronics Product 179,Electronics,3542,5593,152,95,51,239,11,35
+SKU-RETAIL-180,Apparel Product 180,Apparel,3134,5242,18,30,16,74,14,25
+SKU-RETAIL-181,Home Goods Product 181,Home Goods,693,1029,28,17,9,24,4,8
+SKU-RETAIL-182,Apparel Product 182,Apparel,3333,5439,216,97,52,266,9,0
+SKU-RETAIL-183,Apparel Product 183,Apparel,2535,3854,32,23,9,27,14,43
+SKU-RETAIL-184,Home Goods Product 184,Home Goods,1896,2882,197,65,37,167,14,29
+SKU-RETAIL-185,Home Goods Product 185,Home Goods,3646,5461,11,25,12,29,13,2
+SKU-RETAIL-186,Accessories Product 186,Accessories,3149,5237,227,83,43,163,10,29
+SKU-RETAIL-187,Accessories Product 187,Accessories,2846,4580,30,9,4,24,5,50
+SKU-RETAIL-188,Apparel Product 188,Apparel,2437,3921,192,78,45,202,11,9
+SKU-RETAIL-189,Apparel Product 189,Apparel,1425,2358,10,33,15,98,9,13
+SKU-RETAIL-190,Electronics Product 190,Electronics,3658,5476,36,42,22,94,5,49
+SKU-RETAIL-191,Home Goods Product 191,Home Goods,4738,7024,10,22,12,36,5,44
+SKU-RETAIL-192,Accessories Product 192,Accessories,2822,4542,30,18,9,44,9,4
+SKU-RETAIL-193,Apparel Product 193,Apparel,552,806,138,100,35,184,13,27
+SKU-RETAIL-194,Apparel Product 194,Apparel,1634,2483,17,17,10,17,7,23
+SKU-RETAIL-195,Home Goods Product 195,Home Goods,4931,7896,19,7,3,15,4,3
+SKU-RETAIL-196,Home Goods Product 196,Home Goods,1267,1968,60,45,21,51,6,4
+SKU-RETAIL-197,Accessories Product 197,Accessories,3588,5731,147,67,25,188,14,1
+SKU-RETAIL-198,Electronics Product 198,Electronics,2243,3750,8,24,12,39,3,39
+SKU-RETAIL-199,Accessories Product 199,Accessories,3991,6094,11,15,6,20,9,7
+SKU-RETAIL-200,Home Goods Product 200,Home Goods,1654,2614,21,14,8,17,3,40

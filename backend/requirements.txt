@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+openai==1.58.1
+pandas==2.2.3
+statsmodels==0.14.4
+python-multipart==0.0.20
+python-dotenv==1.0.1
+pydantic==2.10.3
+pdfplumber==0.11.4
+numpy==1.26.4

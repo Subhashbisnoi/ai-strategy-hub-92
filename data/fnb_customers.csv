@@ -1,0 +1,15 @@
+name,email,phone,gstin,address,payment_terms
+Fnb Client 1,contact@client1.com,9000000001,29AABCU0001R1ZA,Bangalore,60
+Fnb Client 2,contact@client2.com,9000000002,29AABCU0002R1ZB,Hyderabad,60
+Fnb Client 3,contact@client3.com,9000000003,29AABCU0003R1ZC,Pune,60
+Fnb Client 4,contact@client4.com,9000000004,29AABCU0004R1ZC,Delhi,30
+Fnb Client 5,contact@client5.com,9000000005,29AABCU0005R1ZC,Mumbai,60
+Fnb Client 6,contact@client6.com,9000000006,29AABCU0006R1ZA,Delhi,15
+Fnb Client 7,contact@client7.com,9000000007,29AABCU0007R1ZC,Bangalore,15
+Fnb Client 8,contact@client8.com,9000000008,29AABCU0008R1ZA,Hyderabad,15
+Fnb Client 9,contact@client9.com,9000000009,29AABCU0009R1ZA,Pune,45
+Fnb Client 10,contact@client10.com,9000000010,29AABCU0010R1ZB,Delhi,45
+Fnb Client 11,contact@client11.com,9000000011,29AABCU0011R1ZB,Pune,45
+Fnb Client 12,contact@client12.com,9000000012,29AABCU0012R1ZA,Delhi,15
+Fnb Client 13,contact@client13.com,9000000013,29AABCU0013R1ZB,Hyderabad,45
+Fnb Client 14,contact@client14.com,9000000014,29AABCU0014R1ZB,Bangalore,60

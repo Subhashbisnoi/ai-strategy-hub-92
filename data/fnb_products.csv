@@ -1,0 +1,61 @@
+sku,name,category,cost_price,selling_price,current_stock,reorder_point,safety_stock,eoq,supplier_lead_time_days,units_sold_30d
+SKU-FNB-001,Hot Bev Flagship (Hero),Hot Bev,3408,8057,55,26,12,62,14,153
+SKU-FNB-002,Bakery Product 2,Bakery,899,1938,152,133,77,144,14,4
+SKU-FNB-003,Hot Bev Product 3,Hot Bev,4463,9102,0,0,0,0,5,22
+SKU-FNB-004,Bakery Product 4,Bakery,4222,9158,114,73,43,188,10,40
+SKU-FNB-005,Cold Bev Product 5,Cold Bev,2488,5653,29,46,26,49,10,40
+SKU-FNB-006,Bakery Product 6,Bakery,3430,7792,18,40,22,120,6,14
+SKU-FNB-007,Hot Bev Product 7,Hot Bev,876,1790,0,0,0,0,6,23
+SKU-FNB-008,Cold Bev Product 8,Cold Bev,796,1685,84,106,58,130,12,17
+SKU-FNB-009,Meals Product 9,Meals,1686,3573,0,0,0,0,3,36
+SKU-FNB-010,Meals Product 10,Meals,1635,3327,35,31,16,38,5,4
+SKU-FNB-011,Cold Bev Product 11,Cold Bev,1064,2187,49,15,5,35,10,35
+SKU-FNB-012,Bakery Product 12,Bakery,4062,8526,123,57,24,95,11,0
+SKU-FNB-013,Hot Bev Product 13,Hot Bev,1422,3429,37,38,20,64,6,34
+SKU-FNB-014,Meals Product 14,Meals,4507,10457,0,0,0,0,10,32
+SKU-FNB-015,Hot Bev Product 15,Hot Bev,2020,4837,120,50,28,80,11,42
+SKU-FNB-016,Meals Product 16,Meals,3061,6857,28,55,22,56,11,24
+SKU-FNB-017,Cold Bev Product 17,Cold Bev,2339,5589,59,30,16,54,14,5
+SKU-FNB-018,Bakery Product 18,Bakery,2087,4422,238,75,33,215,14,36
+SKU-FNB-019,Meals Product 19,Meals,4881,10771,0,0,0,0,10,26
+SKU-FNB-020,Meals Product 20,Meals,2445,5807,144,45,19,117,13,35
+SKU-FNB-021,Hot Bev Product 21,Hot Bev,3027,6838,382,103,47,272,14,3
+SKU-FNB-022,Hot Bev Product 22,Hot Bev,410,998,27,57,27,59,6,18
+SKU-FNB-023,Hot Bev Product 23,Hot Bev,1359,2946,69,21,7,57,14,1
+SKU-FNB-024,Meals Product 24,Meals,1817,3947,0,0,0,0,6,10
+SKU-FNB-025,Bakery Product 25,Bakery,2287,4863,50,50,24,62,13,40
+SKU-FNB-026,Hot Bev Product 26,Hot Bev,1320,2811,43,27,15,32,12,33
+SKU-FNB-027,Meals Product 27,Meals,2176,5232,77,26,12,65,7,44
+SKU-FNB-028,Meals Product 28,Meals,488,1092,0,0,0,0,10,22
+SKU-FNB-029,Meals Product 29,Meals,90,182,8,22,9,28,13,21
+SKU-FNB-030,Hot Bev Product 30,Hot Bev,4700,10289,213,102,57,204,9,26
+SKU-FNB-031,Bakery Product 31,Bakery,1776,4084,196,146,86,416,12,48
+SKU-FNB-032,Hot Bev Product 32,Hot Bev,4337,10031,0,0,0,0,8,11
+SKU-FNB-033,Meals Product 33,Meals,192,430,0,0,0,0,6,37
+SKU-FNB-034,Cold Bev Product 34,Cold Bev,221,512,0,0,0,0,3,43
+SKU-FNB-035,Bakery Product 35,Bakery,3580,7326,240,93,41,197,13,4
+SKU-FNB-036,Bakery Product 36,Bakery,486,992,132,144,74,242,14,14
+SKU-FNB-037,Hot Bev Product 37,Hot Bev,98,216,105,32,12,76,5,36
+SKU-FNB-038,Hot Bev Product 38,Hot Bev,2225,5316,0,0,0,0,6,16
+SKU-FNB-039,Meals Product 39,Meals,2438,5392,24,18,9,51,3,17
+SKU-FNB-040,Hot Bev Product 40,Hot Bev,1444,3184,0,0,0,0,5,17
+SKU-FNB-041,Hot Bev Product 41,Hot Bev,4286,9162,116,95,50,219,9,42
+SKU-FNB-042,Cold Bev Product 42,Cold Bev,896,2118,3,6,2,9,4,29
+SKU-FNB-043,Meals Product 43,Meals,1151,2453,7,6,3,13,3,3
+SKU-FNB-044,Bakery Product 44,Bakery,2968,7029,31,30,14,82,8,6
+SKU-FNB-045,Meals Product 45,Meals,456,1097,60,40,16,111,8,43
+SKU-FNB-046,Hot Bev Product 46,Hot Bev,3568,7427,149,73,31,214,14,49
+SKU-FNB-047,Bakery Product 47,Bakery,1527,3546,223,54,24,154,10,23
+SKU-FNB-048,Bakery Product 48,Bakery,2698,5450,8,5,2,10,3,34
+SKU-FNB-049,Bakery Product 49,Bakery,2594,5211,6,24,8,25,8,8
+SKU-FNB-050,Hot Bev Product 50,Hot Bev,2340,5092,181,68,26,148,14,27
+SKU-FNB-051,Cold Bev Product 51,Cold Bev,1846,4246,78,76,40,167,9,26
+SKU-FNB-052,Bakery Product 52,Bakery,2077,4580,127,52,30,143,11,50
+SKU-FNB-053,Bakery Product 53,Bakery,1001,2035,13,6,3,13,3,2
+SKU-FNB-054,Meals Product 54,Meals,2071,4473,33,19,10,32,9,22
+SKU-FNB-055,Bakery Product 55,Bakery,1756,3706,55,22,11,65,11,43
+SKU-FNB-056,Cold Bev Product 56,Cold Bev,2516,5732,0,0,0,0,13,13
+SKU-FNB-057,Bakery Product 57,Bakery,3571,7733,135,104,59,125,9,34
+SKU-FNB-058,Hot Bev Product 58,Hot Bev,1922,4204,224,94,44,189,10,45
+SKU-FNB-059,Meals Product 59,Meals,2267,5319,1,5,2,7,3,40
+SKU-FNB-060,Bakery Product 60,Bakery,3016,6704,312,119,64,272,11,49
