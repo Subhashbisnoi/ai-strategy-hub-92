@@ -2,7 +2,7 @@
 
 > A full-stack, multi-agent AI platform for electronics retailers and SMBs — combining real-time financial analytics, quantum-inspired inventory optimization, automated invoicing, and an end-to-end agentic procurement pipeline.
 
-**Live Demo:** [collabup.live](https://www.collabup.live) &nbsp;|&nbsp; **Backend API:** [ai-strategy-hub-92.onrender.com](https://ai-strategy-hub-92.onrender.com/api/health)
+**Live Demo:** [collabup.live/demo](https://www.collabup.live/demo) &nbsp;
 
 ---
 
