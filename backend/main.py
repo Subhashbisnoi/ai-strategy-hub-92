@@ -33,7 +33,8 @@ _project_root = os.path.dirname(_this_dir)
 load_dotenv(os.path.join(_project_root, ".env"))
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("VITE_OPENAI_API_KEY", "")
-print(f"[FinAI] API key loaded: {'YES' if OPENAI_API_KEY else 'NO'} (len={len(OPENAI_API_KEY)})")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+print(f"[FinAI] OpenAI key: {'YES' if OPENAI_API_KEY else 'NO'} | Groq key: {'YES' if GROQ_API_KEY else 'NO'}")
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 
@@ -769,6 +770,37 @@ def run_pipeline(
 @app.get("/api/orchestrator/status")
 def get_pipeline_status(session_id: str = Query(...), db: Session = Depends(get_db)):
     return orchestrator.get_pipeline_status(db, session_id)
+
+
+# ─── Speech-to-Text (Groq Whisper) ───────────────────
+
+@app.post("/api/speech-to-text")
+async def speech_to_text(audio: UploadFile = File(...)):
+    """Transcribe audio using Groq Whisper and return text."""
+    if not GROQ_API_KEY:
+        raise HTTPException(status_code=500, detail="Groq API key not configured")
+    try:
+        from groq import Groq
+        groq_client = Groq(api_key=GROQ_API_KEY)
+        audio_bytes = await audio.read()
+        import tempfile, os as _os
+        suffix = _os.path.splitext(audio.filename or "audio.webm")[1] or ".webm"
+        with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+            tmp.write(audio_bytes)
+            tmp_path = tmp.name
+        try:
+            with open(tmp_path, "rb") as f:
+                transcription = groq_client.audio.transcriptions.create(
+                    file=(audio.filename or "audio.webm", f.read()),
+                    model="whisper-large-v3",
+                    language="en",
+                )
+            return {"text": transcription.text}
+        finally:
+            _os.unlink(tmp_path)
+    except Exception as e:
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ─── FinAI CRM Chatbot ───────────────────────────────
