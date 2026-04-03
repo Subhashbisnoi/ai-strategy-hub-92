@@ -341,48 +341,77 @@ export default function InvoiceCRM({ sessionId }: InvoiceCRMProps) {
                         <textarea
                           value={englishText}
                           onChange={(e) => setEnglishText(e.target.value)}
-                          rows={5}
-                          placeholder={recording ? "🎙️ Listening... speak now" : "e.g. Create an invoice for Rahul Electronics for 5 USB-C cables at ₹250 each and 2 laptop stands at ₹1800 each. GSTIN is 27AABCU9603R1ZM. Payment due in 15 days."}
-                          className={`w-full rounded-xl border px-4 py-3 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none transition-colors ${
-                            recording ? "border-red-400 bg-red-50/30" : "border-border"
+                          rows={6}
+                          placeholder={recording ? "Listening to your voice..." : "e.g. Create an invoice for Rahul Electronics for 5 USB-C cables at ₹250 each and 2 laptop stands at ₹1800 each. GSTIN is 27AABCU9603R1ZM. Payment due in 15 days."}
+                          className={`w-full rounded-2xl border px-4 py-4 pr-16 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 resize-none transition-all duration-300 ${
+                            recording 
+                              ? "border-indigo-400 bg-indigo-50/20 shadow-[0_0_20px_rgba(99,102,241,0.08)]" 
+                              : "border-slate-200 hover:border-slate-300 bg-white"
                           }`}
-                          disabled={recording}
-                        />
-                        {/* Mic button inside textarea */}
-                        <button
-                          type="button"
-                          onClick={recording ? stopRecording : startRecording}
                           disabled={transcribing}
-                          className={`absolute bottom-3 right-3 w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
-                            recording
-                              ? "bg-red-500 hover:bg-red-600 text-white animate-pulse"
-                              : transcribing
-                              ? "bg-slate-200 text-slate-400 cursor-not-allowed"
-                              : "bg-indigo-100 hover:bg-indigo-200 text-indigo-600"
-                          }`}
-                          title={recording ? "Stop recording" : "Speak to type"}
-                        >
-                          {transcribing ? (
-                            <Loader2 className="w-5 h-5 animate-spin" />
-                          ) : recording ? (
-                            <MicOff className="w-5 h-5" />
-                          ) : (
-                            <Mic className="w-5 h-5" />
-                          )}
-                        </button>
+                        />
+                        
+                        {/* Modern Floating Mic Button inside the textarea */}
+                        <div className="absolute bottom-4 right-4 flex items-center gap-3">
+                          <AnimatePresence>
+                            {transcribing && (
+                              <motion.div
+                                initial={{ opacity: 0, x: 10, scale: 0.95 }}
+                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                exit={{ opacity: 0, x: 10, scale: 0.95 }}
+                                className="flex items-center gap-2 bg-indigo-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-indigo-100 shadow-sm"
+                              >
+                                <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin" />
+                                <span className="text-xs font-semibold text-indigo-600">Transcribing</span>
+                              </motion.div>
+                            )}
+                            {recording && !transcribing && (
+                              <motion.div
+                                initial={{ opacity: 0, x: 10, scale: 0.95 }}
+                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                exit={{ opacity: 0, x: 10, scale: 0.95 }}
+                                className="flex items-center gap-2 bg-rose-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-rose-100 shadow-sm"
+                              >
+                                <span className="relative flex h-2 w-2">
+                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+                                </span>
+                                <span className="text-xs font-semibold text-rose-600">Listening</span>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+
+                          <button
+                            type="button"
+                            onClick={recording ? stopRecording : startRecording}
+                            disabled={transcribing}
+                            className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 shadow-sm ${
+                              recording
+                                ? "bg-rose-500 text-white hover:bg-rose-600 shadow-rose-200"
+                                : transcribing
+                                ? "bg-slate-100 text-slate-400 cursor-not-allowed"
+                                : "bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200/50 hover:-translate-y-0.5"
+                            }`}
+                            title={recording ? "Stop recording" : "Speak to type"}
+                          >
+                            {/* Pulse ripples when recording */}
+                            {recording && (
+                              <>
+                                <span className="absolute inset-0 rounded-full border-2 border-rose-300 animate-ping opacity-75"></span>
+                                <span className="absolute -inset-1 rounded-full border border-rose-200 animate-ping opacity-50" style={{ animationDelay: '0.2s' }}></span>
+                              </>
+                            )}
+                            
+                            {transcribing ? (
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                            ) : recording ? (
+                              <svg className="w-4 h-4 fill-current relative z-10" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" /></svg>
+                            ) : (
+                              <Mic className="w-5 h-5 relative z-10" />
+                            )}
+                          </button>
+                        </div>
                       </div>
-                      {transcribing && (
-                        <p className="text-xs text-indigo-600 mt-1.5 flex items-center gap-1.5">
-                          <Loader2 className="w-3 h-3 animate-spin" />
-                          Transcribing your voice...
-                        </p>
-                      )}
-                      {recording && (
-                        <p className="text-xs text-red-500 mt-1.5 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                          Recording... click the mic button to stop
-                        </p>
-                      )}
                     </div>
                     <div className="flex items-center gap-3">
                       <Button
