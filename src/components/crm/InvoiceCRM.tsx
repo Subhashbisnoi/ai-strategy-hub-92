@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Upload, FileText, FileImage, Search, Plus, Filter, Download, PenLine, FileUp, MessageSquareText, Trash2, Sparkles, CheckCircle2, X, IndianRupee } from "lucide-react";
+import { Upload, FileText, FileImage, Search, Plus, Filter, Download, PenLine, FileUp, MessageSquareText, Trash2, Sparkles, CheckCircle2, X, IndianRupee, Mic, MicOff, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const API = "/api";
@@ -44,6 +44,57 @@ export default function InvoiceCRM({ sessionId }: InvoiceCRMProps) {
   // Plain English state
   const [englishText, setEnglishText] = useState("");
   const [aiProcessing, setAiProcessing] = useState(false);
+
+  // Speech-to-text state
+  const [recording, setRecording] = useState(false);
+  const [transcribing, setTranscribing] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+      audioChunksRef.current = [];
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) audioChunksRef.current.push(e.data);
+      };
+      mediaRecorder.onstop = async () => {
+        stream.getTracks().forEach((t) => t.stop());
+        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
+        await transcribeAudio(audioBlob);
+      };
+      mediaRecorderRef.current = mediaRecorder;
+      mediaRecorder.start();
+      setRecording(true);
+    } catch (err) {
+      console.error("Mic access denied:", err);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      mediaRecorderRef.current.stop();
+    }
+    setRecording(false);
+  };
+
+  const transcribeAudio = async (blob: Blob) => {
+    setTranscribing(true);
+    try {
+      const fd = new FormData();
+      fd.append("audio", blob, "recording.webm");
+      const res = await fetch(`${API}/speech-to-text`, { method: "POST", body: fd });
+      if (res.ok) {
+        const data = await res.json();
+        setEnglishText((prev) => (prev ? prev + " " : "") + data.text);
+      }
+    } catch (err) {
+      console.error("Transcription failed:", err);
+    } finally {
+      setTranscribing(false);
+    }
+  };
 
   // Detail view state
   const [selectedInvoice, setSelectedInvoice] = useState<any>(null);
@@ -286,13 +337,52 @@ export default function InvoiceCRM({ sessionId }: InvoiceCRMProps) {
                       <label className="block text-sm font-semibold text-slate-700 mb-2">
                         Describe the invoice in plain English
                       </label>
-                      <textarea
-                        value={englishText}
-                        onChange={(e) => setEnglishText(e.target.value)}
-                        rows={5}
-                        placeholder="e.g. Create an invoice for Rahul Electronics for 5 USB-C cables at ₹250 each and 2 laptop stands at ₹1800 each. GSTIN is 27AABCU9603R1ZM. Payment due in 15 days."
-                        className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                      />
+                      <div className="relative">
+                        <textarea
+                          value={englishText}
+                          onChange={(e) => setEnglishText(e.target.value)}
+                          rows={5}
+                          placeholder={recording ? "🎙️ Listening... speak now" : "e.g. Create an invoice for Rahul Electronics for 5 USB-C cables at ₹250 each and 2 laptop stands at ₹1800 each. GSTIN is 27AABCU9603R1ZM. Payment due in 15 days."}
+                          className={`w-full rounded-xl border px-4 py-3 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none transition-colors ${
+                            recording ? "border-red-400 bg-red-50/30" : "border-border"
+                          }`}
+                          disabled={recording}
+                        />
+                        {/* Mic button inside textarea */}
+                        <button
+                          type="button"
+                          onClick={recording ? stopRecording : startRecording}
+                          disabled={transcribing}
+                          className={`absolute bottom-3 right-3 w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
+                            recording
+                              ? "bg-red-500 hover:bg-red-600 text-white animate-pulse"
+                              : transcribing
+                              ? "bg-slate-200 text-slate-400 cursor-not-allowed"
+                              : "bg-indigo-100 hover:bg-indigo-200 text-indigo-600"
+                          }`}
+                          title={recording ? "Stop recording" : "Speak to type"}
+                        >
+                          {transcribing ? (
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                          ) : recording ? (
+                            <MicOff className="w-5 h-5" />
+                          ) : (
+                            <Mic className="w-5 h-5" />
+                          )}
+                        </button>
+                      </div>
+                      {transcribing && (
+                        <p className="text-xs text-indigo-600 mt-1.5 flex items-center gap-1.5">
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                          Transcribing your voice...
+                        </p>
+                      )}
+                      {recording && (
+                        <p className="text-xs text-red-500 mt-1.5 flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                          Recording... click the mic button to stop
+                        </p>
+                      )}
                     </div>
                     <div className="flex items-center gap-3">
                       <Button
