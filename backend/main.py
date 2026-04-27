@@ -7,11 +7,14 @@ import json
 import os
 import traceback
 import uuid
+from datetime import datetime
 from collections import defaultdict
 from contextlib import asynccontextmanager
 
+import requests as http_requests
+
 from dotenv import load_dotenv
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Query, Body, Form
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Query, Body, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pydantic import BaseModel
@@ -254,32 +257,33 @@ def create_session(db: Session = Depends(get_db)):
     return {"session_id": sid, **stats}
 
 
-# ─── Login (demo) ────────────────────────────────────
+# ─── Google OAuth Login ──────────────────────────────
 
-_DEMO_USERS = {
-    "user1": "retail",
-    "user2": "fnb",
-    "user3": "saas",
-    "user4": "services",
-}
+GOOGLE_CLIENT_ID = "426227223924-a2sqq0hug114ljvo3iqgidliufrihntf.apps.googleusercontent.com"
 
 
-class LoginRequest(BaseModel):
-    username: str
-    password: str
+class GoogleAuthRequest(BaseModel):
+    access_token: str
 
 
-@app.post("/api/login")
-def login(req: LoginRequest, db: Session = Depends(get_db)):
-    """Demo login — creates a fresh session seeded with data."""
-    if req.password != "user123":
-        raise HTTPException(status_code=401, detail="Invalid password")
-    btype = _DEMO_USERS.get(req.username)
-    if not btype:
-        raise HTTPException(status_code=401, detail="Unknown user")
+@app.post("/api/auth/google")
+def google_auth(req: GoogleAuthRequest, db: Session = Depends(get_db)):
+    """Verify Google access token and create a session."""
+    resp = http_requests.get(
+        "https://www.googleapis.com/oauth2/v3/userinfo",
+        headers={"Authorization": f"Bearer {req.access_token}"},
+        timeout=10,
+    )
+    if resp.status_code != 200:
+        raise HTTPException(status_code=401, detail="Invalid Google token")
+
+    info = resp.json()
+    email = info.get("email", "")
+    name = info.get("name") or info.get("given_name") or email.split("@")[0]
+
     sid = uuid.uuid4().hex[:12]
     _seed_session(db, sid)
-    return {"session_id": sid, "business_type": btype, "username": req.username}
+    return {"session_id": sid, "business_type": "retail", "username": name}
 
 
 # ─── Aggregation Agent ───────────────────────────────
@@ -513,6 +517,8 @@ def create_invoice(
     return invoice_agent.create_invoice(
         db, session_id, req.customer_name, req.customer_gstin,
         req.items, req.gst_rate, req.notes, req.payment_terms_days,
+        rzp_key_id=os.getenv("RAZORPAY_KEY_ID", ""),
+        rzp_key_secret=os.getenv("RAZORPAY_KEY_SECRET", ""),
     )
 
 
@@ -658,6 +664,62 @@ def qubo_compare(session_id: str = Query(...), db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ─── Razorpay Webhook ────────────────────────────────
+
+@app.post("/api/webhooks/razorpay")
+async def razorpay_webhook(request: Request, db: Session = Depends(get_db)):
+    """Handle Razorpay webhook events: payment_link.paid and order.paid."""
+    import hmac as _hmac, hashlib as _hashlib
+
+    body = await request.body()
+    signature = request.headers.get("X-Razorpay-Signature", "")
+    webhook_secret = os.getenv("RAZORPAY_WEBHOOK_SECRET", "")
+
+    if webhook_secret and signature:
+        expected = _hmac.new(
+            webhook_secret.encode(), body, _hashlib.sha256
+        ).hexdigest()
+        if not _hmac.compare_digest(expected, signature):
+            raise HTTPException(status_code=400, detail="Invalid webhook signature")
+
+    payload = json.loads(body)
+    event = payload.get("event", "")
+
+    if event == "payment_link.paid":
+        entity = payload["payload"]["payment_link"]["entity"]
+        notes = entity.get("notes", {})
+        invoice_number = notes.get("invoice_number", "")
+        session_id = notes.get("session_id", "")
+        if invoice_number and session_id:
+            invoice_agent.mark_paid_by_number(db, session_id, invoice_number)
+
+    elif event == "order.paid":
+        entity = payload["payload"]["order"]["entity"]
+        notes = entity.get("notes", {})
+        po_number = notes.get("po_number", "")
+        session_id = notes.get("a2p_session", "")
+        if po_number and session_id:
+            from models import PaymentTransaction, PurchaseOrder
+            po = db.query(PurchaseOrder).filter(
+                PurchaseOrder.session_id == session_id,
+                PurchaseOrder.po_number == po_number,
+            ).first()
+            if po:
+                pmt = db.query(PaymentTransaction).filter(
+                    PaymentTransaction.po_id == po.id,
+                    PaymentTransaction.session_id == session_id,
+                ).order_by(PaymentTransaction.initiated_at.desc()).first()
+                if pmt and pmt.status.value != "success":
+                    from models import PaymentStatus, POStatus
+                    pmt.status = PaymentStatus.success
+                    pmt.completed_at = datetime.utcnow()
+                    po.status = POStatus.completed
+                    po.paid_at = datetime.utcnow()
+                    db.commit()
+
+    return {"status": "ok"}
+
+
 # ─── A2P Payment Protocol ────────────────────────────
 
 
@@ -712,6 +774,23 @@ def reject_po(
     result = a2p_payment.reject_request(db, session_id, approval_id)
     if "error" in result:
         raise HTTPException(status_code=404, detail=result["error"])
+    return result
+
+
+@app.post("/api/a2p/payments/{po_id}/execute")
+def execute_payment(
+    po_id: int,
+    session_id: str = Query(...),
+    db: Session = Depends(get_db),
+):
+    """A2P protocol: agent executes payment via Razorpay after human approval — no checkout UI."""
+    rzp_key_id = os.getenv("RAZORPAY_KEY_ID", "")
+    rzp_key_secret = os.getenv("RAZORPAY_KEY_SECRET", "")
+    if not rzp_key_id or not rzp_key_secret:
+        raise HTTPException(status_code=500, detail="Razorpay keys not configured")
+    result = a2p_payment.execute_payment(db, session_id, po_id, rzp_key_id, rzp_key_secret)
+    if "error" in result:
+        raise HTTPException(status_code=400, detail=result["error"])
     return result
 
 

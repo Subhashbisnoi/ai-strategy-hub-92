@@ -11,3 +11,5 @@ pdfplumber==0.11.4
 numpy==1.26.4
 groq==0.25.0
 psycopg2-binary==2.9.9
+razorpay==1.4.2
+requests==2.32.3
